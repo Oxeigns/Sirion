@@ -6,8 +6,14 @@ import config
 from OxygenMusic import app
 from OxygenMusic.misc import db
 from OxygenMusic.core.call import Aviax, autoend, counter
-from OxygenMusic.utils.database import get_client, set_loop, is_active_chat, is_autoend, is_autoleave
-import logging
+from OxygenMusic.utils.database import (
+    get_client,
+    set_loop,
+    is_active_chat,
+    is_autoend,
+    is_autoleave,
+)
+from OxygenMusic.logging import LOGGER
 
 async def auto_leave():
     while not await asyncio.sleep(900):
@@ -36,10 +42,12 @@ async def auto_leave():
                                     await client.leave_chat(i.chat.id)
                                     left += 1
                                 except Exception as e:
-                                    logging.error(f"Error leaving chat {i.chat.id}: {e}")
+                                    LOGGER(__name__).error(
+                                        f"Error leaving chat {i.chat.id}: {e}"
+                                    )
                                     continue
             except Exception as e:
-                logging.error(f"Error processing dialogs: {e}")
+                LOGGER(__name__).error(f"Error processing dialogs: {e}")
 
 asyncio.create_task(auto_leave())
                     
@@ -82,6 +90,6 @@ async def auto_end():
             for chat_id in keys_to_remove:
                 del autoend[chat_id]
         except Exception as e:
-            logging.info(e)
+            LOGGER(__name__).info(e)
 
 asyncio.create_task(auto_end())
