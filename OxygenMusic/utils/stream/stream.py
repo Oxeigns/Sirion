@@ -8,11 +8,8 @@ import config
 from OxygenMusic import Carbon, YouTube, app
 from OxygenMusic.core.call import Aviax
 from OxygenMusic.misc import db
-from OxygenMusic.utils.database import (
-    add_active_video_chat,
-    is_active_chat,
-    increase_play_count,
-)
+from OxygenMusic.utils.database import (add_active_video_chat,
+                                        increase_play_count, is_active_chat)
 from OxygenMusic.utils.exceptions import AssistantErr
 from OxygenMusic.utils.inline import aq_markup, close_markup, stream_markup
 from OxygenMusic.utils.pastebin import AviaxBin
@@ -142,12 +139,13 @@ async def stream(
         duration_min = result["duration_min"]
         thumbnail = result["thumb"]
         status = True if video else None
-    
+
         current_queue = db.get(chat_id)
 
-        
         if current_queue is not None and len(current_queue) >= 10:
-            return await app.send_message(original_chat_id, "You can't add more than 10 songs to the queue.")
+            return await app.send_message(
+                original_chat_id, "You can't add more than 10 songs to the queue."
+            )
 
         try:
             file_path, direct = await YouTube.download(

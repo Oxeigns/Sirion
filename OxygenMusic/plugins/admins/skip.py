@@ -2,6 +2,7 @@ from pyrogram import filters
 from pyrogram.types import InlineKeyboardMarkup, Message
 
 import config
+from config import BANNED_USERS
 from OxygenMusic import YouTube, app
 from OxygenMusic.core.call import Aviax
 from OxygenMusic.misc import db
@@ -10,7 +11,6 @@ from OxygenMusic.utils.decorators import AdminRightsCheck
 from OxygenMusic.utils.inline import close_markup, stream_markup
 from OxygenMusic.utils.stream.autoclear import auto_clean
 from OxygenMusic.utils.thumbnails import gen_thumb
-from config import BANNED_USERS
 
 
 @app.on_message(
@@ -192,9 +192,11 @@ async def skip(cli, message: Message, _, chat_id):
         if videoid == "telegram":
             button = stream_markup(_, chat_id)
             run = await message.reply_photo(
-                photo=config.TELEGRAM_AUDIO_URL
-                if str(streamtype) == "audio"
-                else config.TELEGRAM_VIDEO_URL,
+                photo=(
+                    config.TELEGRAM_AUDIO_URL
+                    if str(streamtype) == "audio"
+                    else config.TELEGRAM_VIDEO_URL
+                ),
                 caption=_["stream_1"].format(
                     config.SUPPORT_GROUP, title[:23], check[0]["dur"], user
                 ),
@@ -205,9 +207,11 @@ async def skip(cli, message: Message, _, chat_id):
         elif videoid == "soundcloud":
             button = stream_markup(_, chat_id)
             run = await message.reply_photo(
-                photo=config.SOUNCLOUD_IMG_URL
-                if str(streamtype) == "audio"
-                else config.TELEGRAM_VIDEO_URL,
+                photo=(
+                    config.SOUNCLOUD_IMG_URL
+                    if str(streamtype) == "audio"
+                    else config.TELEGRAM_VIDEO_URL
+                ),
                 caption=_["stream_1"].format(
                     config.SUPPORT_GROUP, title[:23], check[0]["dur"], user
                 ),

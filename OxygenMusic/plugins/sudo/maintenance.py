@@ -3,12 +3,8 @@ from pyrogram.types import Message
 
 from OxygenMusic import app
 from OxygenMusic.misc import SUDOERS
-from OxygenMusic.utils.database import (
-    get_lang,
-    is_maintenance,
-    maintenance_off,
-    maintenance_on,
-)
+from OxygenMusic.utils.database import (get_lang, is_maintenance,
+                                        maintenance_off, maintenance_on)
 from strings import get_string
 
 

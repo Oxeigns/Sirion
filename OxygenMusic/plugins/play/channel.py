@@ -2,10 +2,10 @@ from pyrogram import filters
 from pyrogram.enums import ChatMembersFilter, ChatMemberStatus, ChatType
 from pyrogram.types import Message
 
+from config import BANNED_USERS
 from OxygenMusic import app
 from OxygenMusic.utils.database import set_cmode
 from OxygenMusic.utils.decorators.admins import AdminActual
-from config import BANNED_USERS
 
 
 @app.on_message(filters.command(["channelplay"]) & filters.group & ~BANNED_USERS)

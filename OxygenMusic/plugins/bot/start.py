@@ -6,26 +6,20 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from youtubesearchpython.__future__ import VideosSearch
 
 import config
+from config import BANNED_USERS
 from OxygenMusic import app
+from OxygenMusic.logging import LOGGER
 from OxygenMusic.misc import _boot_
 from OxygenMusic.plugins.sudo.sudoers import sudoers_list
-from OxygenMusic.utils.database import (
-    add_served_chat,
-    add_served_user,
-    blacklisted_chats,
-    get_lang,
-    is_banned_user,
-    is_on_off,
-    get_vip_user,
-    is_vip_user,
-    user_play_count,
-)
 from OxygenMusic.utils import bot_sys_stats
+from OxygenMusic.utils.database import (add_served_chat, add_served_user,
+                                        blacklisted_chats, get_lang,
+                                        get_vip_user, is_banned_user,
+                                        is_on_off, is_vip_user,
+                                        user_play_count)
 from OxygenMusic.utils.decorators.language import LanguageStart
 from OxygenMusic.utils.formatters import get_readable_time
 from OxygenMusic.utils.inline import help_pannel, private_panel, start_panel
-from OxygenMusic.logging import LOGGER
-from config import BANNED_USERS
 from strings import get_string
 
 
@@ -93,7 +87,9 @@ async def start_pm(client, message: Message, _):
         UP, CPU, RAM, DISK = await bot_sys_stats()
         await message.reply_photo(
             photo=config.START_IMG_URL,
-            caption=_["start_2"].format(message.from_user.mention, app.mention, UP, DISK, CPU, RAM),
+            caption=_["start_2"].format(
+                message.from_user.mention, app.mention, UP, DISK, CPU, RAM
+            ),
             reply_markup=InlineKeyboardMarkup(out),
         )
         if await is_on_off(2):

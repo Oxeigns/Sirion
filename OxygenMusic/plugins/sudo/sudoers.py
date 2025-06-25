@@ -1,13 +1,13 @@
 from pyrogram import filters
 from pyrogram.types import Message
 
+from config import BANNED_USERS, OWNER_ID
 from OxygenMusic import app
 from OxygenMusic.misc import SUDOERS
 from OxygenMusic.utils.database import add_sudo, remove_sudo
 from OxygenMusic.utils.decorators.language import language
 from OxygenMusic.utils.extraction import extract_user
 from OxygenMusic.utils.inline import close_markup
-from config import BANNED_USERS, OWNER_ID
 
 
 @app.on_message(filters.command(["addsudo"]) & filters.user(OWNER_ID))

@@ -4,12 +4,10 @@ from unidecode import unidecode
 
 from OxygenMusic import app
 from OxygenMusic.misc import SUDOERS
-from OxygenMusic.utils.database import (
-    get_active_chats,
-    get_active_video_chats,
-    remove_active_chat,
-    remove_active_video_chat,
-)
+from OxygenMusic.utils.database import (get_active_chats,
+                                        get_active_video_chats,
+                                        remove_active_chat,
+                                        remove_active_video_chat)
 
 
 @app.on_message(filters.command(["activevc", "activevoice"]) & SUDOERS)

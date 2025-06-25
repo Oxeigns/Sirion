@@ -2,6 +2,7 @@ from ..logging import LOGGER
 
 try:  # noqa: WPS501 - optional dependency
     import uvloop
+
     uvloop.install()
 except ImportError:  # noqa: WPS440
     LOGGER(__name__).info("uvloop not installed, using default event loop")

@@ -3,12 +3,12 @@ from datetime import datetime
 from pyrogram import filters
 from pyrogram.types import Message
 
+from config import BANNED_USERS, PING_IMG_URL
 from OxygenMusic import app
 from OxygenMusic.core.call import Aviax
 from OxygenMusic.utils import bot_sys_stats
 from OxygenMusic.utils.decorators.language import language
 from OxygenMusic.utils.inline import supp_markup
-from config import BANNED_USERS, PING_IMG_URL
 
 
 @app.on_message(filters.command(["ping", "alive"]) & ~BANNED_USERS)

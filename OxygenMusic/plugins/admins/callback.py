@@ -3,37 +3,24 @@ import asyncio
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
+import config
+from config import (BANNED_USERS, SOUNCLOUD_IMG_URL, STREAM_IMG_URL,
+                    TELEGRAM_AUDIO_URL, TELEGRAM_VIDEO_URL, adminlist,
+                    confirmer, votemode)
 from OxygenMusic import YouTube, app
 from OxygenMusic.core.call import Aviax
 from OxygenMusic.misc import SUDOERS, db
-from OxygenMusic.utils.database import (
-    get_active_chats,
-    get_lang,
-    get_upvote_count,
-    is_active_chat,
-    is_music_playing,
-    is_nonadmin_chat,
-    music_off,
-    music_on,
-    set_loop,
-)
+from OxygenMusic.utils.database import (get_active_chats, get_lang,
+                                        get_upvote_count, is_active_chat,
+                                        is_music_playing, is_nonadmin_chat,
+                                        music_off, music_on, set_loop)
 from OxygenMusic.utils.decorators.language import languageCB
 from OxygenMusic.utils.formatters import seconds_to_min
-from OxygenMusic.utils.inline import close_markup, stream_markup, stream_markup_timer
+from OxygenMusic.utils.inline import (close_markup, stream_markup,
+                                      stream_markup_timer)
 from OxygenMusic.utils.stream.autoclear import auto_clean
 from OxygenMusic.utils.thumbnails import gen_thumb
-from config import (
-    BANNED_USERS,
-    SOUNCLOUD_IMG_URL,
-    STREAM_IMG_URL,
-    TELEGRAM_AUDIO_URL,
-    TELEGRAM_VIDEO_URL,
-    adminlist,
-    confirmer,
-    votemode,
-)
 from strings import get_string
-import config
 
 checker = {}
 upvoters = {}
@@ -309,9 +296,11 @@ async def del_back_playlist(client, CallbackQuery, _):
             if videoid == "telegram":
                 button = stream_markup(_, chat_id)
                 run = await CallbackQuery.message.reply_photo(
-                    photo=TELEGRAM_AUDIO_URL
-                    if str(streamtype) == "audio"
-                    else TELEGRAM_VIDEO_URL,
+                    photo=(
+                        TELEGRAM_AUDIO_URL
+                        if str(streamtype) == "audio"
+                        else TELEGRAM_VIDEO_URL
+                    ),
                     caption=_["stream_1"].format(
                         config.SUPPORT_GROUP, title[:23], duration, user
                     ),
@@ -322,9 +311,11 @@ async def del_back_playlist(client, CallbackQuery, _):
             elif videoid == "soundcloud":
                 button = stream_markup(_, chat_id)
                 run = await CallbackQuery.message.reply_photo(
-                    photo=SOUNCLOUD_IMG_URL
-                    if str(streamtype) == "audio"
-                    else TELEGRAM_VIDEO_URL,
+                    photo=(
+                        SOUNCLOUD_IMG_URL
+                        if str(streamtype) == "audio"
+                        else TELEGRAM_VIDEO_URL
+                    ),
                     caption=_["stream_1"].format(
                         config.SUPPORT_GROUP, title[:23], duration, user
                     ),

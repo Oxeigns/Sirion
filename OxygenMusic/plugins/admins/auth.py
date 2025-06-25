@@ -1,17 +1,13 @@
 from pyrogram import filters
 from pyrogram.types import Message
 
+from config import BANNED_USERS, adminlist
 from OxygenMusic import app
 from OxygenMusic.utils import extract_user, int_to_alpha
-from OxygenMusic.utils.database import (
-    delete_authuser,
-    get_authuser,
-    get_authuser_names,
-    save_authuser,
-)
+from OxygenMusic.utils.database import (delete_authuser, get_authuser,
+                                        get_authuser_names, save_authuser)
 from OxygenMusic.utils.decorators import AdminActual, language
 from OxygenMusic.utils.inline import close_markup
-from config import BANNED_USERS, adminlist
 
 
 @app.on_message(filters.command("auth") & filters.group & ~BANNED_USERS)

@@ -1,5 +1,6 @@
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from typing import Iterable, List, Tuple, Union
+
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 Button = Union[
     Tuple[str, str],  # text, callback_data

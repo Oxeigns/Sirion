@@ -1,9 +1,9 @@
 from pyrogram import filters
 from pyrogram.types import Message
 
-from OxygenMusic import app
-from OxygenMusic.utils.database import is_vip_user, get_vip_user
 from config import BANNED_USERS
+from OxygenMusic import app
+from OxygenMusic.utils.database import get_vip_user, is_vip_user
 
 
 @app.on_message(filters.command("myrewards") & ~BANNED_USERS)
@@ -27,5 +27,6 @@ async def vipqueue(_, message: Message):
     cmd = message.text.split(maxsplit=1)
     query = cmd[1] if len(cmd) > 1 else ""
     reply_id = message.reply_to_message.id if message.reply_to_message else message.id
-    await app.send_message(message.chat.id, f"/playforce {query}", reply_to_message_id=reply_id)
-
+    await app.send_message(
+        message.chat.id, f"/playforce {query}", reply_to_message_id=reply_id
+    )

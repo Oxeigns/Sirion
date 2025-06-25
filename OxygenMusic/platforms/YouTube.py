@@ -1,12 +1,12 @@
 import asyncio
-import httpx
 import os
 import re
-import yt_dlp
-
 from typing import Union
-from pyrogram.types import Message
+
+import httpx
+import yt_dlp
 from pyrogram.enums import MessageEntityType
+from pyrogram.types import Message
 from youtubesearchpython.__future__ import VideosSearch
 
 
@@ -30,11 +30,10 @@ async def shell_cmd(cmd):
     return out.decode("utf-8")
 
 
-
 async def get_stream_url(query, video=False):
     api_url = "http://138.68.148.93:1470/youtube"
     api_key = "1a873582a7c83342f961cx0a177b2b26"
-    
+
     async with httpx.AsyncClient(timeout=60) as client:
         params = {"query": query, "video": video, "api_key": api_key}
         response = await client.get(api_url, params=params)
@@ -42,7 +41,6 @@ async def get_stream_url(query, video=False):
             return ""
         info = response.json()
         return info.get("stream_url")
-
 
 
 class YouTubeAPI:
@@ -137,9 +135,8 @@ class YouTubeAPI:
             link = self.base + link
         if "&" in link:
             link = link.split("&")[0]
-            
+
         return await get_stream_url(link, True)
-        
 
     async def playlist(self, link, limit, user_id, videoid: Union[bool, str] = None):
         if videoid:

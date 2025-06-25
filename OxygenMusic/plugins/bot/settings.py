@@ -1,42 +1,27 @@
 from pyrogram import filters
 from pyrogram.enums import ChatType
 from pyrogram.errors import MessageNotModified
-from pyrogram.types import (
-    CallbackQuery,
-    InlineKeyboardButton,
-    InlineKeyboardMarkup,
-    Message,
-)
+from pyrogram.types import (CallbackQuery, InlineKeyboardButton,
+                            InlineKeyboardMarkup, Message)
 
+from config import BANNED_USERS, OWNER_ID
 from OxygenMusic import app
-from OxygenMusic.utils.database import (
-    add_nonadmin_chat,
-    get_authuser,
-    get_authuser_names,
-    get_playmode,
-    get_playtype,
-    get_upvote_count,
-    is_nonadmin_chat,
-    is_skipmode,
-    remove_nonadmin_chat,
-    set_playmode,
-    set_playtype,
-    set_upvotes,
-    skip_off,
-    skip_on,
-)
+from OxygenMusic.logging import LOGGER
 from OxygenMusic.utils import bot_sys_stats
+from OxygenMusic.utils.database import (add_nonadmin_chat, get_authuser,
+                                        get_authuser_names, get_playmode,
+                                        get_playtype, get_upvote_count,
+                                        is_nonadmin_chat, is_skipmode,
+                                        remove_nonadmin_chat, set_playmode,
+                                        set_playtype, set_upvotes, skip_off,
+                                        skip_on)
 from OxygenMusic.utils.decorators.admins import ActualAdminCB
 from OxygenMusic.utils.decorators.language import language, languageCB
-from OxygenMusic.utils.inline.settings import (
-    auth_users_markup,
-    playmode_users_markup,
-    setting_markup,
-    vote_mode_markup,
-)
+from OxygenMusic.utils.inline.settings import (auth_users_markup,
+                                               playmode_users_markup,
+                                               setting_markup,
+                                               vote_mode_markup)
 from OxygenMusic.utils.inline.start import private_panel
-from config import BANNED_USERS, OWNER_ID
-from OxygenMusic.logging import LOGGER
 
 
 @app.on_message(
@@ -81,7 +66,9 @@ async def settings_back_markup(client, CallbackQuery: CallbackQuery, _):
         buttons = private_panel(_)
         UP, CPU, RAM, DISK = await bot_sys_stats()
         return await CallbackQuery.edit_message_text(
-            _["start_2"].format(CallbackQuery.from_user.mention, app.mention, UP, DISK, CPU, RAM),
+            _["start_2"].format(
+                CallbackQuery.from_user.mention, app.mention, UP, DISK, CPU, RAM
+            ),
             reply_markup=InlineKeyboardMarkup(buttons),
         )
     else:
@@ -334,9 +321,7 @@ async def authusers_mar(client, CallbackQuery, _):
             upl = InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton(
-                            text=_["BACK_BUTTON"], callback_data="AU"
-                        ),
+                        InlineKeyboardButton(text=_["BACK_BUTTON"], callback_data="AU"),
                         InlineKeyboardButton(
                             text=_["CLOSE_BUTTON"],
                             callback_data="close",

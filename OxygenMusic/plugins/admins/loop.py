@@ -1,11 +1,11 @@
 from pyrogram import filters
 from pyrogram.types import Message
 
+from config import BANNED_USERS
 from OxygenMusic import app
 from OxygenMusic.utils.database import get_loop, set_loop
 from OxygenMusic.utils.decorators import AdminRightsCheck
 from OxygenMusic.utils.inline import close_markup
-from config import BANNED_USERS
 
 
 @app.on_message(filters.command(["loop", "cloop"]) & filters.group & ~BANNED_USERS)

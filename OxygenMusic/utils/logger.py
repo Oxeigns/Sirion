@@ -1,8 +1,8 @@
 from pyrogram.enums import ParseMode
 
+from config import LOG_GROUP_ID
 from OxygenMusic import app
 from OxygenMusic.utils.database import is_on_off
-from config import LOG_GROUP_ID
 
 
 async def play_logs(message, streamtype):

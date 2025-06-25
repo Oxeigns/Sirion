@@ -22,6 +22,7 @@ async def logger(client, message, _):
     else:
         await message.reply_text(usage)
 
+
 @app.on_message(filters.command(["cookies"]) & SUDOERS)
 @language
 async def send_logs(client, message, _):

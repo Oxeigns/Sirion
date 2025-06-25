@@ -5,15 +5,8 @@ from OxygenMusic.core.userbot import Userbot
 from OxygenMusic.misc import dbb, heroku
 
 from .logging import LOGGER as LOGGER
-from .platforms import (
-    AppleAPI,
-    CarbonAPI,
-    RessoAPI,
-    SoundAPI,
-    SpotifyAPI,
-    TeleAPI,
-    YouTubeAPI,
-)
+from .platforms import (AppleAPI, CarbonAPI, RessoAPI, SoundAPI, SpotifyAPI,
+                        TeleAPI, YouTubeAPI)
 
 dirr()
 git()

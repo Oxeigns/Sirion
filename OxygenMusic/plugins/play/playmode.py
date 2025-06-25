@@ -1,11 +1,12 @@
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardMarkup, Message
 
+from config import BANNED_USERS
 from OxygenMusic import app
-from OxygenMusic.utils.database import get_playmode, get_playtype, is_nonadmin_chat
+from OxygenMusic.utils.database import (get_playmode, get_playtype,
+                                        is_nonadmin_chat)
 from OxygenMusic.utils.decorators import language
 from OxygenMusic.utils.inline.settings import playmode_users_markup
-from config import BANNED_USERS
 
 
 @app.on_message(filters.command(["playmode", "mode"]) & filters.group & ~BANNED_USERS)
