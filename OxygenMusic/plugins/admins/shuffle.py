@@ -3,11 +3,11 @@ import random
 from pyrogram import filters
 from pyrogram.types import Message
 
+from config import BANNED_USERS
 from OxygenMusic import app
 from OxygenMusic.misc import db
 from OxygenMusic.utils.decorators import AdminRightsCheck
 from OxygenMusic.utils.inline import close_markup
-from config import BANNED_USERS
 
 
 @app.on_message(

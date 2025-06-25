@@ -6,33 +6,25 @@ from typing import Union
 from pyrogram import Client
 from pyrogram.types import InlineKeyboardMarkup
 from pytgcalls import PyTgCalls, StreamType
-from pytgcalls.exceptions import (
-    AlreadyJoinedError,
-    NoActiveGroupCall,
-    TelegramServerError,
-)
+from pytgcalls.exceptions import (AlreadyJoinedError, NoActiveGroupCall,
+                                  TelegramServerError)
 from pytgcalls.types import Update
 from pytgcalls.types.input_stream import AudioPiped, AudioVideoPiped
-from pytgcalls.types.input_stream.quality import HighQualityAudio, MediumQualityVideo
+from pytgcalls.types.input_stream.quality import (HighQualityAudio,
+                                                  MediumQualityVideo)
 from pytgcalls.types.stream import StreamAudioEnded
 
 import config
 from OxygenMusic import LOGGER, YouTube, app
 from OxygenMusic.misc import db
-from OxygenMusic.utils.database import (
-    add_active_chat,
-    add_active_video_chat,
-    get_lang,
-    get_loop,
-    group_assistant,
-    is_autoend,
-    music_on,
-    remove_active_chat,
-    remove_active_video_chat,
-    set_loop,
-)
+from OxygenMusic.utils.database import (add_active_chat, add_active_video_chat,
+                                        get_lang, get_loop, group_assistant,
+                                        is_autoend, music_on,
+                                        remove_active_chat,
+                                        remove_active_video_chat, set_loop)
 from OxygenMusic.utils.exceptions import AssistantErr
-from OxygenMusic.utils.formatters import check_duration, seconds_to_min, speed_converter
+from OxygenMusic.utils.formatters import (check_duration, seconds_to_min,
+                                          speed_converter)
 from OxygenMusic.utils.inline.play import stream_markup
 from OxygenMusic.utils.stream.autoclear import auto_clean
 from OxygenMusic.utils.thumbnails import gen_thumb
@@ -327,7 +319,9 @@ class Call(PyTgCalls):
             counter[chat_id] = {}
             users = len(await assistant.get_participants(chat_id))
             if users == 1:
-                autoend[chat_id] = datetime.now() + timedelta(minutes=config.AUTO_VC_LEAVE_TIME)
+                autoend[chat_id] = datetime.now() + timedelta(
+                    minutes=config.AUTO_VC_LEAVE_TIME
+                )
 
     async def change_stream(self, client, chat_id):
         check = db.get(chat_id)
@@ -502,9 +496,11 @@ class Call(PyTgCalls):
                     button = stream_markup(_, chat_id)
                     run = await app.send_photo(
                         chat_id=original_chat_id,
-                        photo=config.TELEGRAM_AUDIO_URL
-                        if str(streamtype) == "audio"
-                        else config.TELEGRAM_VIDEO_URL,
+                        photo=(
+                            config.TELEGRAM_AUDIO_URL
+                            if str(streamtype) == "audio"
+                            else config.TELEGRAM_VIDEO_URL
+                        ),
                         caption=_["stream_1"].format(
                             config.SUPPORT_GROUP, title[:23], check[0]["dur"], user
                         ),

@@ -1,13 +1,10 @@
-from pyrogram.types import (
-    InlineKeyboardButton,
-    InlineKeyboardMarkup,
-    InlineQueryResultPhoto,
-)
+from pyrogram.types import (InlineKeyboardButton, InlineKeyboardMarkup,
+                            InlineQueryResultPhoto)
 from youtubesearchpython.__future__ import VideosSearch
 
+from config import BANNED_USERS
 from OxygenMusic import app
 from OxygenMusic.utils.inlinequery import answer
-from config import BANNED_USERS
 
 
 @app.on_inline_query(~BANNED_USERS)

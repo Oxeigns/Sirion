@@ -1,6 +1,8 @@
 import config
 from OxygenMusic import app
+
 from .keyboard import build_inline_keyboard
+
 
 def start_panel(_):
     return build_inline_keyboard(
@@ -13,6 +15,7 @@ def start_panel(_):
             ((_["S_B_7"], "https://t.me/TeamSirion", True),),
         ]
     )
+
 
 def private_panel(_):
     return build_inline_keyboard(

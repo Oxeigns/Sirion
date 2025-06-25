@@ -6,13 +6,14 @@ from pyrogram.errors import FloodWait
 from pyrogram.types import CallbackQuery, InputMediaPhoto, Message
 
 import config
+from config import BANNED_USERS
 from OxygenMusic import app
 from OxygenMusic.misc import db
 from OxygenMusic.utils import AviaxBin, get_channeplayCB, seconds_to_min
-from OxygenMusic.utils.database import get_cmode, is_active_chat, is_music_playing
+from OxygenMusic.utils.database import (get_cmode, is_active_chat,
+                                        is_music_playing)
 from OxygenMusic.utils.decorators.language import language, languageCB
 from OxygenMusic.utils.inline import queue_back_markup, queue_markup
-from config import BANNED_USERS
 
 basic = {}
 

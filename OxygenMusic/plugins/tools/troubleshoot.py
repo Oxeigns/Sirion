@@ -1,11 +1,11 @@
 from pyrogram import filters
-from pyrogram.types import CallbackQuery, InlineKeyboardButton, InlineKeyboardMarkup, Message
+from pyrogram.types import (CallbackQuery, InlineKeyboardButton,
+                            InlineKeyboardMarkup, Message)
 
+from config import BANNED_USERS, adminlist, lyrical
 from OxygenMusic import app
 from OxygenMusic.core.call import Aviax
 from OxygenMusic.misc import db
-from config import BANNED_USERS, adminlist, lyrical
-
 
 MENU = [
     [InlineKeyboardButton("🔁 Restart playback loop", callback_data="tb_restart")],
@@ -15,7 +15,9 @@ MENU = [
 ]
 
 
-@app.on_message(filters.command(["troubleshoot", "trouble"]) & filters.group & ~BANNED_USERS)
+@app.on_message(
+    filters.command(["troubleshoot", "trouble"]) & filters.group & ~BANNED_USERS
+)
 async def troubleshoot_cmd(_, message: Message):
     await message.reply_text(
         "Troubleshooting Menu",
@@ -48,4 +50,3 @@ async def cb_refresh(_, cb: CallbackQuery):
 async def cb_cache(_, cb: CallbackQuery):
     adminlist[cb.message.chat.id] = []
     await cb.answer("User cache rebuilt", show_alert=True)
-

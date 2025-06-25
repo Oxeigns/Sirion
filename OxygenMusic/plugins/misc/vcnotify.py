@@ -3,10 +3,11 @@ from pyrogram.types import Message
 
 from OxygenMusic import app
 from OxygenMusic.misc import SUDOERS
-from OxygenMusic.utils.database import add_on, add_off, is_on_off, get_lang
+from OxygenMusic.utils.database import add_off, add_on, get_lang, is_on_off
 from strings import get_string
 
 VCNOTIFY_ID = 3
+
 
 @app.on_message(filters.command(["vcnotify"]) & SUDOERS)
 async def vcnotify_toggle(client, message: Message):
@@ -24,6 +25,7 @@ async def vcnotify_toggle(client, message: Message):
         await message.reply_text(_["vc_3"])
     else:
         await message.reply_text(usage)
+
 
 # ``video_chat_joined`` filter was removed from newer versions of
 # Pyrogram. ``video_chat_participants_invited`` provides a similar

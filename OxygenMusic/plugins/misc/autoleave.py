@@ -1,22 +1,21 @@
 import asyncio
+
 from pyrogram.enums import ChatType
 from pytgcalls.exceptions import GroupCallNotFound
+
 import config
 from OxygenMusic import app
-from OxygenMusic.misc import db
 from OxygenMusic.core.call import Aviax, autoend
-from OxygenMusic.utils.database import (
-    get_client,
-    set_loop,
-    is_active_chat,
-    is_autoend,
-    is_autoleave,
-)
 from OxygenMusic.logging import LOGGER
+from OxygenMusic.misc import db
+from OxygenMusic.utils.database import (get_client, is_active_chat, is_autoend,
+                                        is_autoleave, set_loop)
+
 
 async def auto_leave():
     while not await asyncio.sleep(900):
         from OxygenMusic.core.userbot import assistants
+
         ender = await is_autoleave()
         if not ender:
             continue
@@ -32,7 +31,9 @@ async def auto_leave():
                     ]:
                         if (
                             i.chat.id != config.LOG_GROUP_ID
-                            and i.chat.id != -1002016928980 and i.chat.id != -1002200386150 and i.chat.id != -1001397779415
+                            and i.chat.id != -1002016928980
+                            and i.chat.id != -1002200386150
+                            and i.chat.id != -1001397779415
                         ):
                             if left == 20:
                                 continue
@@ -48,8 +49,10 @@ async def auto_leave():
             except Exception as e:
                 LOGGER(__name__).error(f"Error processing dialogs: {e}")
 
+
 asyncio.create_task(auto_leave())
-                    
+
+
 async def auto_end():
     global autoend, counter
     while True:
@@ -82,12 +85,16 @@ async def auto_end():
                         pass
                     try:
                         if not nocall:
-                            await app.send_message(chat_id, "» ʙᴏᴛ ᴀᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ ʟᴇғᴛ ᴠɪᴅᴇᴏᴄʜᴀᴛ ʙᴇᴄᴀᴜsᴇ ɴᴏ ᴏɴᴇ ᴡᴀs ʟɪsᴛᴇɴɪɴɢ ᴏɴ ᴠɪᴅᴇᴏᴄʜᴀᴛ.")
+                            await app.send_message(
+                                chat_id,
+                                "» ʙᴏᴛ ᴀᴜᴛᴏᴍᴀᴛɪᴄᴀʟʟʏ ʟᴇғᴛ ᴠɪᴅᴇᴏᴄʜᴀᴛ ʙᴇᴄᴀᴜsᴇ ɴᴏ ᴏɴᴇ ᴡᴀs ʟɪsᴛᴇɴɪɴɢ ᴏɴ ᴠɪᴅᴇᴏᴄʜᴀᴛ.",
+                            )
                     except Exception:
                         pass
             for chat_id in keys_to_remove:
                 del autoend[chat_id]
         except Exception as e:
             LOGGER(__name__).info(e)
+
 
 asyncio.create_task(auto_end())

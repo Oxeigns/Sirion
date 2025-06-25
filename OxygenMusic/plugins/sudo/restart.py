@@ -12,11 +12,8 @@ from pyrogram import filters
 import config
 from OxygenMusic import app
 from OxygenMusic.misc import HAPP, SUDOERS, XCB
-from OxygenMusic.utils.database import (
-    get_active_chats,
-    remove_active_chat,
-    remove_active_video_chat,
-)
+from OxygenMusic.utils.database import (get_active_chats, remove_active_chat,
+                                        remove_active_video_chat)
 from OxygenMusic.utils.decorators.language import language
 from OxygenMusic.utils.pastebin import AviaxBin
 

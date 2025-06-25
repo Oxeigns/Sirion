@@ -5,13 +5,14 @@ from pyrogram import filters
 from pyrogram.enums import ChatMembersFilter
 from pyrogram.types import CallbackQuery, Message
 
+from config import BANNED_USERS, adminlist, lyrical
 from OxygenMusic import app
 from OxygenMusic.core.call import Aviax
 from OxygenMusic.misc import db
-from OxygenMusic.utils.database import get_assistant, get_authuser_names, get_cmode
+from OxygenMusic.utils.database import (get_assistant, get_authuser_names,
+                                        get_cmode)
 from OxygenMusic.utils.decorators import ActualAdminCB, AdminActual, language
 from OxygenMusic.utils.formatters import alpha_to_int, get_readable_time
-from config import BANNED_USERS, adminlist, lyrical
 
 rel = {}
 

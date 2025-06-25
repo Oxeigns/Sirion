@@ -1,9 +1,10 @@
 from pyrogram import filters
 from pyrogram.types import Message
 
-from OxygenMusic import app
-from OxygenMusic.utils.database import get_top_users, get_top_chats
 from config import BANNED_USERS
+from OxygenMusic import app
+from OxygenMusic.utils.database import get_top_chats, get_top_users
+
 
 @app.on_message(filters.command(["top", "toptracks"]) & ~BANNED_USERS)
 async def top_cmd(_, message: Message):

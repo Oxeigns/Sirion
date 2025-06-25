@@ -219,6 +219,7 @@ async def autoend_off():
     chat_id = 1234
     await autoenddb.delete_one({"chat_id": chat_id})
 
+
 async def is_autoleave() -> bool:
     chat_id = 1234
     user = await autoleavedb.find_one({"chat_id": chat_id})
@@ -685,6 +686,7 @@ def get_top_chats(limit: int = 5):
 
 # ------------------ VIP USERS ------------------ #
 
+
 async def get_vip_user(user_id: int):
     return await vipdb.find_one({"user_id": user_id})
 
@@ -711,4 +713,3 @@ async def increase_global_xp(user_id: int, amount: int = 1):
 async def is_vip_user(user_id: int) -> bool:
     user = await get_vip_user(user_id)
     return bool(user and user.get("is_vip"))
-

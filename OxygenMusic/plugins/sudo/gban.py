@@ -4,20 +4,15 @@ from pyrogram import filters
 from pyrogram.errors import FloodWait
 from pyrogram.types import Message
 
+from config import BANNED_USERS
 from OxygenMusic import app
 from OxygenMusic.misc import SUDOERS
 from OxygenMusic.utils import get_readable_time
-from OxygenMusic.utils.database import (
-    add_banned_user,
-    get_banned_count,
-    get_banned_users,
-    get_served_chats,
-    is_banned_user,
-    remove_banned_user,
-)
+from OxygenMusic.utils.database import (add_banned_user, get_banned_count,
+                                        get_banned_users, get_served_chats,
+                                        is_banned_user, remove_banned_user)
 from OxygenMusic.utils.decorators.language import language
 from OxygenMusic.utils.extraction import extract_user
-from config import BANNED_USERS
 
 
 @app.on_message(filters.command(["gban", "globalban"]) & SUDOERS)

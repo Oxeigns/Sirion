@@ -1,11 +1,12 @@
+import aiohttp
 from pyrogram import filters
 from pyrogram.types import Message
-import aiohttp
 
-from OxygenMusic import app
 from config import BANNED_USERS
+from OxygenMusic import app
 
 LYRICS_API = "https://api.lyrics.ovh/v1/{artist}/{title}"
+
 
 @app.on_message(filters.command(["lyrics"]) & ~BANNED_USERS)
 async def fetch_lyrics(_, message: Message):

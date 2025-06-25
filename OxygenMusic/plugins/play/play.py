@@ -6,24 +6,21 @@ from pyrogram.types import InlineKeyboardMarkup, InputMediaPhoto, Message
 from pytgcalls.exceptions import NoActiveGroupCall
 
 import config
-from OxygenMusic import Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app
+from config import BANNED_USERS, lyrical
+from OxygenMusic import (Apple, Resso, SoundCloud, Spotify, Telegram, YouTube,
+                         app)
 from OxygenMusic.core.call import Aviax
+from OxygenMusic.logging import LOGGER
 from OxygenMusic.utils import time_to_seconds
 from OxygenMusic.utils.channelplay import get_channeplayCB
 from OxygenMusic.utils.decorators.language import languageCB
 from OxygenMusic.utils.decorators.play import PlayWrapper
 from OxygenMusic.utils.formatters import formats
-from OxygenMusic.utils.inline import (
-    botplaylist_markup,
-    livestream_markup,
-    playlist_markup,
-    slider_markup,
-    track_markup,
-)
+from OxygenMusic.utils.inline import (botplaylist_markup, livestream_markup,
+                                      playlist_markup, slider_markup,
+                                      track_markup)
 from OxygenMusic.utils.logger import play_logs
 from OxygenMusic.utils.stream.stream import stream
-from config import BANNED_USERS, lyrical
-from OxygenMusic.logging import LOGGER
 
 
 @app.on_message(

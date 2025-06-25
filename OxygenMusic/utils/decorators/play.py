@@ -1,27 +1,17 @@
 import asyncio
 
 from pyrogram.enums import ChatMemberStatus
-from pyrogram.errors import (
-    ChatAdminRequired,
-    InviteRequestSent,
-    UserAlreadyParticipant,
-    UserNotParticipant,
-)
+from pyrogram.errors import (ChatAdminRequired, InviteRequestSent,
+                             UserAlreadyParticipant, UserNotParticipant)
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
+from config import PLAYLIST_IMG_URL, SUPPORT_GROUP, adminlist
 from OxygenMusic import YouTube, app
 from OxygenMusic.misc import SUDOERS
-from OxygenMusic.utils.database import (
-    get_assistant,
-    get_cmode,
-    get_lang,
-    get_playmode,
-    get_playtype,
-    is_active_chat,
-    is_maintenance,
-)
+from OxygenMusic.utils.database import (get_assistant, get_cmode, get_lang,
+                                        get_playmode, get_playtype,
+                                        is_active_chat, is_maintenance)
 from OxygenMusic.utils.inline import botplaylist_markup
-from config import PLAYLIST_IMG_URL, SUPPORT_GROUP, adminlist
 from strings import get_string
 
 links = {}
@@ -50,7 +40,6 @@ def PlayWrapper(command):
                     text=f"{app.mention} ɪs ᴜɴᴅᴇʀ ᴍᴀɪɴᴛᴇɴᴀɴᴄᴇ, ᴠɪsɪᴛ <a href={SUPPORT_GROUP}>sᴜᴘᴘᴏʀᴛ ᴄʜᴀᴛ</a> ғᴏʀ ᴋɴᴏᴡɪɴɢ ᴛʜᴇ ʀᴇᴀsᴏɴ.",
                     disable_web_page_preview=True,
                 )
-                
 
         try:
             await message.delete()

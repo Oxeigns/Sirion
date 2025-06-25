@@ -1,8 +1,9 @@
 from pyrogram import filters
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from pyrogram.enums import ParseMode
-from OxygenMusic import app
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
+
 import config
+from OxygenMusic import app
 
 TEXT = f"""
 🔒 **Privacy Policy for {app.mention} !**
@@ -12,21 +13,15 @@ Your privacy is important to us. To learn more about how we collect, use, and pr
 If you have any questions or concerns, feel free to reach out to our [support team](https://t.me/ShrutiBotSupport).
 """
 
+
 @app.on_message(filters.command("privacy"))
 async def privacy(client, message: Message):
     keyboard = InlineKeyboardMarkup(
-        [
-            [
-                InlineKeyboardButton(
-                    "View Privacy Policy", url=config.SUPPORT_GROUP
-                )
-            ]
-        ]
+        [[InlineKeyboardButton("View Privacy Policy", url=config.SUPPORT_GROUP)]]
     )
     await message.reply_text(
-        TEXT, 
-        reply_markup=keyboard, 
-        parse_mode=ParseMode.MARKDOWN, 
-        disable_web_page_preview=True
+        TEXT,
+        reply_markup=keyboard,
+        parse_mode=ParseMode.MARKDOWN,
+        disable_web_page_preview=True,
     )
-

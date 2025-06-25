@@ -10,8 +10,8 @@ from time import time
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
-from OxygenMusic import app
 from config import OWNER_ID
+from OxygenMusic import app
 from OxygenMusic.logging import LOGGER
 
 
@@ -43,7 +43,9 @@ async def edit_or_reply(msg: Message, **kwargs):
 )
 async def executor(client: app, message: Message):
     if len(message.command) < 2:
-        return await edit_or_reply(message, text="<b>ᴡhat you wanna execute NIGGA . . ?</b>")
+        return await edit_or_reply(
+            message, text="<b>ᴡhat you wanna execute NIGGA . . ?</b>"
+        )
     try:
         cmd = message.text.split(" ", maxsplit=1)[1]
     except IndexError:

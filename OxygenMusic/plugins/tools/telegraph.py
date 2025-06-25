@@ -1,7 +1,9 @@
 import os
+
 import requests
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
+
 from OxygenMusic import app
 
 
@@ -20,9 +22,7 @@ def upload_file(file_path):
 @app.on_message(filters.command(["tgm"]))
 async def get_link_group(client, message):
     if not message.reply_to_message:
-        return await message.reply_text(
-            "Pʟᴇᴀsᴇ ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴍᴇᴅɪᴀ"
-        )
+        return await message.reply_text("Pʟᴇᴀsᴇ ʀᴇᴘʟʏ ᴛᴏ ᴀ ᴍᴇᴅɪᴀ")
 
     media = message.reply_to_message
     file_size = 0
@@ -56,7 +56,13 @@ async def get_link_group(client, message):
                     f"🌐 | <a href='{upload_url}'>👉 ʏᴏᴜʀ ʟɪɴᴋ ᴛᴀᴘ ʜᴇʀᴇ 👈</a>",
                     disable_web_page_preview=False,
                     reply_markup=InlineKeyboardMarkup(
-                        [[InlineKeyboardButton("🌍 ᴘʀᴇss ᴀɴᴅ ʜᴏʟᴅ ᴛᴏ ᴠɪᴇᴡ", url=upload_url)]]
+                        [
+                            [
+                                InlineKeyboardButton(
+                                    "🌍 ᴘʀᴇss ᴀɴᴅ ʜᴏʟᴅ ᴛᴏ ᴠɪᴇᴡ", url=upload_url
+                                )
+                            ]
+                        ]
                     ),
                 )
             else:
