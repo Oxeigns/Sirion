@@ -39,14 +39,14 @@ update() {
 }
 
 packages(){
-	if ! command -v pip &>/dev/null; then
-		pprint "Couldn't found pip, installing now..."
+        if ! command -v pip &>/dev/null; then
+                pprint "Couldn't find pip, installing now..."
 		sudo apt install python3-pip -y 2>pypilog.txt 1>/dev/null &&
 		pprint "SUCCESS.\n\n" "cgreen" || (pprint "FAIL.\n\n" "cred"; exit 1)
 	fi
 
-	if ! command -v ffmpeg &>/dev/null; then
-		pprint "Couldn't found ffmpeg, installing now..."
+        if ! command -v ffmpeg &>/dev/null; then
+                pprint "Couldn't find ffmpeg, installing now..."
 		if sudo apt install ffmpeg -y &>/dev/null;then
 			pprint "SUCCESS.\n\n" "cgreen"
 		else
@@ -57,8 +57,8 @@ packages(){
 	fi
 
 	# Check ffmpeg version and warn user if necessary.
-	fv=$(grep -Po 'version (3.*?) ' <<< $(ffmpeg -version)) &&
-	pprint "Playing live streams not going to work since you have ffmpeg $fv, live streams are supported by version 4+.\n" "cblue"
+        fv=$(grep -Po 'version (3.*?) ' <<< $(ffmpeg -version)) &&
+        pprint "Playing live streams won't work since you have ffmpeg $fv; live streams require version 4+.\n" "cblue"
 }
 
 
