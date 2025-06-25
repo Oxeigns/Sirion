@@ -91,7 +91,7 @@ STRING5 = os.getenv("STRING_SESSION5", None)
 # ⚙️ Runtime Configurations
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-AUTO_LEAVING_ASSISTANT = bool(os.getenv("AUTO_LEAVING_ASSISTANT", False))
+AUTO_LEAVING_ASSISTANT = os.getenv("AUTO_LEAVING_ASSISTANT", "False").lower() == "true"
 AUTO_VC_LEAVE_TIME = int(os.getenv("AUTO_VC_LEAVE_TIME", 60))
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
