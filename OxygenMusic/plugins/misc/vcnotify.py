@@ -25,7 +25,11 @@ async def vcnotify_toggle(client, message: Message):
     else:
         await message.reply_text(usage)
 
-@app.on_message(filters.video_chat_joined)
+# ``video_chat_joined`` filter was removed from newer versions of
+# Pyrogram. ``video_chat_participants_invited`` provides a similar
+# behaviour by triggering when users join an ongoing voice chat via an
+# invite link. Use this filter to avoid AttributeError on import.
+@app.on_message(filters.video_chat_participants_invited)
 async def vc_joined(client, message: Message):
     if not await is_on_off(VCNOTIFY_ID):
         return
