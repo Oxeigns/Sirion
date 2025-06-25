@@ -553,6 +553,8 @@ class Call(PyTgCalls):
             pings.append(await self.four.ping)
         if config.STRING5:
             pings.append(await self.five.ping)
+        if not pings:
+            return "0"
         return str(round(sum(pings) / len(pings), 3))
 
     async def start(self):
