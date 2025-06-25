@@ -15,19 +15,19 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/NoxxOP/ShrutiMusic/fork"><img src="https://img.shields.io/github/forks/NoxxOP/ShrutiMusic?style=social" alt="GitHub Forks"></a>
-  <a href="https://github.com/NoxxOP/ShrutiMusic/stargazers"><img src="https://img.shields.io/github/stars/NoxxOP/ShrutiMusic?style=social" alt="GitHub Stars"></a>
-  <a href="https://github.com/NoxxOP/ShrutiMusic/graphs/contributors"><img src="https://img.shields.io/github/contributors/NoxxOP/ShrutiMusic?style=social" alt="GitHub Contributors"></a>
+  <a href="https://github.com/oxeign/OxygenMusic/fork"><img src="https://img.shields.io/github/forks/oxeign/OxygenMusic?style=social" alt="GitHub Forks"></a>
+  <a href="https://github.com/oxeign/OxygenMusic/stargazers"><img src="https://img.shields.io/github/stars/oxeign/OxygenMusic?style=social" alt="GitHub Stars"></a>
+  <a href="https://github.com/oxeign/OxygenMusic/graphs/contributors"><img src="https://img.shields.io/github/contributors/oxeign/OxygenMusic?style=social" alt="GitHub Contributors"></a>
 </p>
 
 <p align="center">
-<a href="https://dashboard.heroku.com/new?template=https://github.com/NoxxOP/ShrutiMusic"><img src="https://img.shields.io/badge/Deploy%20To%20Heroku-purple?style=for-the-badge&logo=heroku&logoColor=white" width="250px" alt="Deploy to Heroku"></a>
+<a href="https://dashboard.heroku.com/new?template=https://github.com/oxeign/OxygenMusic"><img src="https://img.shields.io/badge/Deploy%20To%20Heroku-purple?style=for-the-badge&logo=heroku&logoColor=white" width="250px" alt="Deploy to Heroku"></a>
 </p>
 
 <h2 align="center">🚀 Deploy to Render (Free)</h2>
 
 <p align="center">
-  <a href="https://render.com/deploy?repo=https://github.com/NoxxOP/ShrutiMusic">
+  <a href="https://render.com/deploy?repo=https://github.com/oxeign/OxygenMusic">
     <img src="https://render.com/images/deploy-to-render-button.svg" alt="Deploy to Render">
   </a>
 </p>
@@ -47,12 +47,12 @@
 ## 📊 Repository Stats
 
 <p align="center">
-  <a href="https://github.com/NoxxOP/ShrutiMusic"><img src="https://img.shields.io/github/repo-size/NoxxOP/ShrutiMusic?style=flat-square" alt="Repo Size"></a>
-  <a href="https://github.com/NoxxOP/ShrutiMusic/issues"><img src="https://img.shields.io/github/issues/NoxxOP/ShrutiMusic?style=flat-square" alt="Issues"></a>
-  <a href="https://github.com/NoxxOP/ShrutiMusic/network/members"><img src="https://img.shields.io/github/forks/NoxxOP/ShrutiMusic?style=flat-square" alt="Forks"></a>
-  <a href="https://github.com/NoxxOP/ShrutiMusic/stargazers"><img src="https://img.shields.io/github/stars/NoxxOP/ShrutiMusic?style=flat-square" alt="Stars"></a>
-  <a href="https://github.com/NoxxOP/ShrutiMusic/blob/main/LICENSE"><img src="https://img.shields.io/github/license/NoxxOP/ShrutiMusic?style=flat-square" alt="LICENSE"></a>
-  <a href="https://github.com/NoxxOP/ShrutiMusic/commits/main"><img src="https://img.shields.io/github/last-commit/NoxxOP/ShrutiMusic?style=flat-square" alt="Last Commit"></a>
+  <a href="https://github.com/oxeign/OxygenMusic"><img src="https://img.shields.io/github/repo-size/oxeign/OxygenMusic?style=flat-square" alt="Repo Size"></a>
+  <a href="https://github.com/oxeign/OxygenMusic/issues"><img src="https://img.shields.io/github/issues/oxeign/OxygenMusic?style=flat-square" alt="Issues"></a>
+  <a href="https://github.com/oxeign/OxygenMusic/network/members"><img src="https://img.shields.io/github/forks/oxeign/OxygenMusic?style=flat-square" alt="Forks"></a>
+  <a href="https://github.com/oxeign/OxygenMusic/stargazers"><img src="https://img.shields.io/github/stars/oxeign/OxygenMusic?style=flat-square" alt="Stars"></a>
+  <a href="https://github.com/oxeign/OxygenMusic/blob/main/LICENSE"><img src="https://img.shields.io/github/license/oxeign/OxygenMusic?style=flat-square" alt="LICENSE"></a>
+  <a href="https://github.com/oxeign/OxygenMusic/commits/main"><img src="https://img.shields.io/github/last-commit/oxeign/OxygenMusic?style=flat-square" alt="Last Commit"></a>
 </p>
 
 ## 🔥 Essential Commands
@@ -86,7 +86,7 @@ sudo apt-get install python3-pip ffmpeg git -y
 #### Clone the Repository
 
 ```bash
-git clone https://github.com/NoxxOP/ShrutiMusicBot
+git clone https://github.com/oxeign/OxygenMusic
 cd ShrutiMusicBot
 ```
 
@@ -164,7 +164,7 @@ screen -r shrutibot
 ### ☁️ Heroku Deployment
 
 <p align="center">
-<a href="https://dashboard.heroku.com/new?template=https://github.com/NoxxOP/ShrutiMusic"><img src="https://img.shields.io/badge/Deploy%20To%20Heroku-purple?style=for-the-badge&logo=heroku&logoColor=white" width="250px" alt="Deploy to Heroku"></a>
+<a href="https://dashboard.heroku.com/new?template=https://github.com/oxeign/OxygenMusic"><img src="https://img.shields.io/badge/Deploy%20To%20Heroku-purple?style=for-the-badge&logo=heroku&logoColor=white" width="250px" alt="Deploy to Heroku"></a>
 </p>
 
 1. Click the button above
@@ -219,7 +219,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 For any questions or help, join our [Support Group](https://t.me/Botsyard)
 
 <p align="center">
-<img src="https://img.shields.io/badge/Made%20with%20%E2%9D%A4%EF%B8%8F%20by-NoxxOP-red?style=for-the-badge" alt="Made with love">
+<img src="https://img.shields.io/badge/Made%20with%20%E2%9D%A4%EF%B8%8F%20by-oxeign-red?style=for-the-badge" alt="Made with love">
 </p>
 
 ---

@@ -1,4 +1,4 @@
-from ShrutiMusic.__main__ import init
+from OxygenMusic.__main__ import init
 import asyncio
 
 if __name__ == "__main__":

@@ -92,6 +92,7 @@ STRING5 = os.getenv("STRING_SESSION5", None)
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 AUTO_LEAVING_ASSISTANT = bool(os.getenv("AUTO_LEAVING_ASSISTANT", False))
+AUTO_VC_LEAVE_TIME = int(os.getenv("AUTO_VC_LEAVE_TIME", 60))
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # 🖼️ Image URLs (Can be customized)
