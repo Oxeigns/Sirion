@@ -89,8 +89,11 @@ async def braodcast_message(client, message, _):
     if message.reply_to_message:
         x = message.reply_to_message.id
         y = message.chat.id
-        reply_markup = message.reply_to_message.reply_markup if message.reply_to_message.reply_markup else None
-        content = None
+        reply_markup = (
+            message.reply_to_message.reply_markup
+            if message.reply_to_message.reply_markup
+            else None
+        )
     else:
         if len(message.command) < 2:
             return await message.reply_text(_["broad_2"])

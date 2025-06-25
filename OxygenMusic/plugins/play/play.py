@@ -8,7 +8,7 @@ from pytgcalls.exceptions import NoActiveGroupCall
 import config
 from OxygenMusic import Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app
 from OxygenMusic.core.call import Aviax
-from OxygenMusic.utils import seconds_to_min, time_to_seconds
+from OxygenMusic.utils import time_to_seconds
 from OxygenMusic.utils.channelplay import get_channeplayCB
 from OxygenMusic.utils.decorators.language import languageCB
 from OxygenMusic.utils.decorators.play import PlayWrapper
@@ -76,7 +76,6 @@ async def play_commnd(
     if audio_telegram:
         if audio_telegram.file_size > 104857600:
             return await mystic.edit_text(_["play_5"])
-        duration_min = seconds_to_min(audio_telegram.duration)
         if (audio_telegram.duration) > config.DURATION_LIMIT:
             return await mystic.edit_text(
                 _["play_6"].format(config.DURATION_LIMIT_MIN, app.mention)

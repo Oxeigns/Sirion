@@ -157,7 +157,7 @@ async def welcome(client, message: Message):
                 await message.stop_propagation()
             else:
                 if await is_vip_user(member.id):
-                    stats = await get_vip_user(member.id)
+                    await get_vip_user(member.id)
                     plays = user_play_count.get(member.id, 0)
                     welcome = (
                         f"🎉 Welcome back, DJ {member.mention}!\n"
