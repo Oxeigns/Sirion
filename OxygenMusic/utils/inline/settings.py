@@ -27,7 +27,7 @@ def vote_mode_markup(_, current, mode: Union[bool, str] = None):
         [
             InlineKeyboardButton(text="Vᴏᴛɪɴɢ ᴍᴏᴅᴇ ➜", callback_data="VOTEANSWER"),
             InlineKeyboardButton(
-                text=_["ST_B_5"] if mode == True else _["ST_B_6"],
+                text=_["ST_B_5"] if mode else _["ST_B_6"],
                 callback_data="VOMODECHANGE",
             ),
         ],
@@ -55,7 +55,7 @@ def auth_users_markup(_, status: Union[bool, str] = None):
         [
             InlineKeyboardButton(text=_["ST_B_7"], callback_data="AUTHANSWER"),
             InlineKeyboardButton(
-                text=_["ST_B_8"] if status == True else _["ST_B_9"],
+                text=_["ST_B_8"] if status else _["ST_B_9"],
                 callback_data="AUTH",
             ),
         ],
@@ -83,21 +83,21 @@ def playmode_users_markup(
         [
             InlineKeyboardButton(text=_["ST_B_10"], callback_data="SEARCHANSWER"),
             InlineKeyboardButton(
-                text=_["ST_B_11"] if Direct == True else _["ST_B_12"],
+                text=_["ST_B_11"] if Direct else _["ST_B_12"],
                 callback_data="MODECHANGE",
             ),
         ],
         [
             InlineKeyboardButton(text=_["ST_B_13"], callback_data="AUTHANSWER"),
             InlineKeyboardButton(
-                text=_["ST_B_8"] if Group == True else _["ST_B_9"],
+                text=_["ST_B_8"] if Group else _["ST_B_9"],
                 callback_data="CHANNELMODECHANGE",
             ),
         ],
         [
             InlineKeyboardButton(text=_["ST_B_14"], callback_data="PLAYTYPEANSWER"),
             InlineKeyboardButton(
-                text=_["ST_B_8"] if Playtype == True else _["ST_B_9"],
+                text=_["ST_B_8"] if Playtype else _["ST_B_9"],
                 callback_data="PLAYTYPECHANGE",
             ),
         ],

@@ -69,9 +69,8 @@ async def auto_end():
                     nocall = True
                 except Exception:
                     users = 100
-                timer = autoend.get(chat_id)
                 if users == 1:
-                    res = await set_loop(chat_id, 0)
+                    await set_loop(chat_id, 0)
                     keys_to_remove.append(chat_id)
                     try:
                         await db[chat_id][0]["mystic"].delete()

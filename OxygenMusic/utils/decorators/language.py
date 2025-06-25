@@ -1,3 +1,4 @@
+from OxygenMusic import app
 from OxygenMusic.misc import SUDOERS
 from OxygenMusic.utils.database import get_lang, is_maintenance
 from config import SUPPORT_GROUP

@@ -1,2 +1,2 @@
-from .admins import *
-from .language import *
+from .admins import *  # noqa: F403
+from .language import *  # noqa: F403
