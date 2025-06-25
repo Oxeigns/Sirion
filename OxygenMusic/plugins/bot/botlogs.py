@@ -1,4 +1,3 @@
-import random
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from config import LOG_GROUP_ID

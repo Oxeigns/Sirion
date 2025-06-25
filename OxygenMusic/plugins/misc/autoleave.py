@@ -1,11 +1,10 @@
 import asyncio
-from datetime import datetime
 from pyrogram.enums import ChatType
 from pytgcalls.exceptions import GroupCallNotFound
 import config
 from OxygenMusic import app
 from OxygenMusic.misc import db
-from OxygenMusic.core.call import Aviax, autoend, counter
+from OxygenMusic.core.call import Aviax, autoend
 from OxygenMusic.utils.database import (
     get_client,
     set_loop,
