@@ -12,7 +12,6 @@ def start_panel(_):
                 (_["S_B_2"], config.SUPPORT_GROUP, True),
             ),
             ((_["S_B_10"], "https://t.me/oxeign", True),),
-            ((_["S_B_7"], "https://t.me/TeamSirion", True),),
         ]
     )
 
@@ -30,6 +29,5 @@ def private_panel(_):
                 (_["S_B_5"], str(config.OWNER_ID), "user"),
             ),
             ((_["S_B_10"], "https://t.me/oxeign", True),),
-            ((_["S_B_7"], "https://t.me/TeamSirion", True),),
         ]
     )
