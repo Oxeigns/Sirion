@@ -87,7 +87,7 @@ sudo apt-get install python3-pip ffmpeg git -y
 
 ```bash
 git clone https://github.com/oxeign/OxygenMusic
-cd ShrutiMusicBot
+cd OxygenMusic
 ```
 
 #### Setup Virtual Environment
@@ -225,5 +225,5 @@ For any questions or help, join our [Support Group](https://t.me/Botsyard)
 ---
 
 <p align="center">
-<b>🎵 Enjoy Streaming Music with Shruti Bot! 🎵</b>
+<b>🎵 Enjoy Streaming Music with Sirion Bot! 🎵</b>
 </p>
