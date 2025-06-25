@@ -1,6 +1,7 @@
 import os
 
 import yaml
+from OxygenMusic.logging import LOGGER
 
 languages = {}
 languages_present = {}
@@ -29,5 +30,5 @@ for filename in os.listdir(r"./strings/langs/"):
     try:
         languages_present[language_name] = languages[language_name]["name"]
     except Exception:
-        print("There is some issue with the language file inside bot.")
+        LOGGER(__name__).error("There is some issue with the language file inside bot.")
         exit()

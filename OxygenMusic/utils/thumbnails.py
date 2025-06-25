@@ -2,7 +2,7 @@
 # ELSE NO FURTHER PUBLIC THUMBNAIL UPDATES
 
 import random
-import logging
+from OxygenMusic.logging import LOGGER
 import os
 import re
 import aiofiles
@@ -11,7 +11,6 @@ from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageFont
 from youtubesearchpython.__future__ import VideosSearch
 import traceback
 
-logging.basicConfig(level=logging.INFO)
 
 def changeImageSize(maxWidth, maxHeight, image):
     widthRatio = maxWidth / image.size[0]
@@ -151,7 +150,9 @@ async def gen_thumb(videoid: str):
                 if resp.status == 200:
                     content_type = resp.headers.get("Content-Type")
                     if not ("jpeg" in content_type or "jpg" in content_type or "png" in content_type):
-                        logging.error(f"Unexpected content type: {content_type}")
+                        LOGGER(__name__).error(
+                            f"Unexpected content type: {content_type}"
+                        )
                         return None
 
                     filepath = f"cache/thumb{videoid}.png"
@@ -240,6 +241,8 @@ async def gen_thumb(videoid: str):
         return background_path
 
     except Exception as e:
-        logging.error(f"Error generating thumbnail for video {videoid}: {e}")
+        LOGGER(__name__).error(
+            f"Error generating thumbnail for video {videoid}: {e}"
+        )
         traceback.print_exc()
         return None
