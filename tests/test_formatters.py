@@ -4,7 +4,7 @@ import pytest
 
 spec = importlib.util.spec_from_file_location(
     "formatters",
-    Path(__file__).resolve().parents[1] / "ShrutiMusic" / "utils" / "formatters.py",
+    Path(__file__).resolve().parents[1] / "OxygenMusic" / "utils" / "formatters.py",
 )
 formatters = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(formatters)
