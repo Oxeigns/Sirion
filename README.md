@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://files.catbox.moe/eehxb4.jpg" alt="˹ᴛʜᴇ sɪʀɪᴏɴ ʙᴏᴛ˼ Logo" width="500px">
+<img src="https://telegra.ph/file/74c2786ec467c233c3132.jpg" alt="˹ᴛʜᴇ sɪʀɪᴏɴ ʙᴏᴛ˼ Logo" width="500px">
 </p>
 
 <h1 align="center">🎵  ˹ᴛʜᴇ sɪʀɪᴏɴ ʙᴏᴛ˼  🎵</h1>
@@ -115,6 +115,7 @@ Fill in your:
 - `SESSION_STRING` (Generate using session generator bot)
 - `MUSIC_BOT_NAME` (your bot name)
 - `SUDO_USERS` (your user ID)
+- `START_IMG_URL` (image shown with /start)
 
 #### Starting the Bot
 
@@ -160,6 +161,7 @@ screen -r shrutibot
    - MUSIC_BOT_NAME
    - SESSION_STRING
    - SUDO_USERS (your User ID)
+   - START_IMG_URL
 3. Click "Deploy App"
 4. Once deployed, go to Resources tab and turn on the worker
 
