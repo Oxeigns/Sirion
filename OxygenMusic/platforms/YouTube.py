@@ -1,4 +1,8 @@
-import asyncio, httpx, os, re, yt_dlp
+import asyncio
+import httpx
+import os
+import re
+import yt_dlp
 
 from typing import Union
 from pyrogram.types import Message
@@ -150,7 +154,7 @@ class YouTubeAPI:
             for key in result:
                 if key == "":
                     result.remove(key)
-        except:
+        except Exception:
             result = []
         return result
 
@@ -188,16 +192,16 @@ class YouTubeAPI:
             for format in r["formats"]:
                 try:
                     str(format["format"])
-                except:
+                except Exception:
                     continue
-                if not "dash" in str(format["format"]).lower():
+                if "dash" not in str(format["format"]).lower():
                     try:
                         format["format"]
                         format["filesize"]
                         format["format_id"]
                         format["ext"]
                         format["format_note"]
-                    except:
+                    except Exception:
                         continue
                     formats_available.append(
                         {

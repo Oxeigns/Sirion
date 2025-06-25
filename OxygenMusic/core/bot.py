@@ -14,7 +14,7 @@ import config
 
 class Aviax(Client):
     def __init__(self):
-        LOGGER(__name__).info(f"Starting Bot...")
+        LOGGER(__name__).info("Starting Bot...")
         super().__init__(
             name="˹T-Series Music˼",
             api_id=config.API_ID,

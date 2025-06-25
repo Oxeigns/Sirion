@@ -4,7 +4,16 @@ from OxygenMusic.core.git import git
 from OxygenMusic.core.userbot import Userbot
 from OxygenMusic.misc import dbb, heroku
 
-from .logging import LOGGER
+from .logging import LOGGER as LOGGER
+from .platforms import (
+    AppleAPI,
+    CarbonAPI,
+    RessoAPI,
+    SoundAPI,
+    SpotifyAPI,
+    TeleAPI,
+    YouTubeAPI,
+)
 
 dirr()
 git()
@@ -13,9 +22,6 @@ heroku()
 
 app = Aviax()
 userbot = Userbot()
-
-
-from .platforms import *
 
 Apple = AppleAPI()
 Carbon = CarbonAPI()
