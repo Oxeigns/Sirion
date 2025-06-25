@@ -24,6 +24,7 @@ from OxygenMusic.utils import bot_sys_stats
 from OxygenMusic.utils.decorators.language import LanguageStart
 from OxygenMusic.utils.formatters import get_readable_time
 from OxygenMusic.utils.inline import help_pannel, private_panel, start_panel
+from OxygenMusic.logging import LOGGER
 from config import BANNED_USERS
 from strings import get_string
 
@@ -168,4 +169,4 @@ async def welcome(client, message: Message):
                     )
                     await message.reply_text(welcome)
         except Exception as ex:
-            print(ex)
+            LOGGER(__name__).exception("Error in start_pm", exc_info=ex)

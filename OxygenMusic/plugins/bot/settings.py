@@ -36,6 +36,7 @@ from OxygenMusic.utils.inline.settings import (
 )
 from OxygenMusic.utils.inline.start import private_panel
 from config import BANNED_USERS, OWNER_ID
+from OxygenMusic.logging import LOGGER
 
 
 @app.on_message(
@@ -190,7 +191,7 @@ async def addition(client, CallbackQuery, _):
     current = await get_upvote_count(CallbackQuery.message.chat.id)
     if mode == "M":
         final = current - 2
-        print(final)
+        LOGGER(__name__).debug("vote final: %s", final)
         if final == 0:
             return await CallbackQuery.answer(
                 _["setting_11"],
@@ -201,7 +202,7 @@ async def addition(client, CallbackQuery, _):
         await set_upvotes(CallbackQuery.message.chat.id, final)
     else:
         final = current + 2
-        print(final)
+        LOGGER(__name__).debug("vote final: %s", final)
         if final == 17:
             return await CallbackQuery.answer(
                 _["setting_12"],
