@@ -25,6 +25,7 @@ playtypedb = mongodb.playtypedb
 skipdb = mongodb.skipmode
 sudoersdb = mongodb.sudoers
 usersdb = mongodb.tgusersdb
+vipdb = mongodb.vipusers
 
 # Shifting to memory [mongo sucks often]
 active = []
@@ -673,6 +674,7 @@ async def remove_banned_user(user_id: int):
 async def increase_play_count(user_id: int, chat_id: int):
     user_play_count[user_id] = user_play_count.get(user_id, 0) + 1
     chat_play_count[chat_id] = chat_play_count.get(chat_id, 0) + 1
+    await increase_global_xp(user_id)
 
 
 def get_top_users(limit: int = 5):
@@ -681,3 +683,34 @@ def get_top_users(limit: int = 5):
 
 def get_top_chats(limit: int = 5):
     return sorted(chat_play_count.items(), key=lambda x: x[1], reverse=True)[:limit]
+
+
+# ------------------ VIP USERS ------------------ #
+
+async def get_vip_user(user_id: int):
+    return await vipdb.find_one({"user_id": user_id})
+
+
+async def add_vip_user(user_id: int, xp: int = 0, perks: list | None = None):
+    if perks is None:
+        perks = ["vipqueue", "loop-any", "hidden-track-access"]
+    await vipdb.update_one(
+        {"user_id": user_id},
+        {"$set": {"is_vip": True, "global_xp": xp, "perks": perks}},
+        upsert=True,
+    )
+
+
+async def increase_global_xp(user_id: int, amount: int = 1):
+    user = await get_vip_user(user_id)
+    if user:
+        new_xp = user.get("global_xp", 0) + amount
+        await vipdb.update_one({"user_id": user_id}, {"$set": {"global_xp": new_xp}})
+    else:
+        await add_vip_user(user_id, xp=amount)
+
+
+async def is_vip_user(user_id: int) -> bool:
+    user = await get_vip_user(user_id)
+    return bool(user and user.get("is_vip"))
+
