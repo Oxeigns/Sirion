@@ -137,7 +137,7 @@ There are two ways to start the bot:
 
 1. Using Python directly:
 ```bash
-python3 oxygen.py
+python3 oxeignmusic.py
 ```
 
 2. Using Bash script:

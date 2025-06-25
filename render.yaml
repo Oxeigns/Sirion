@@ -1,6 +1,6 @@
 services:
   - type: worker
-    name: shrutimusic
+    name: oxeignmusic
     runtime: python
     buildCommand: pip install --no-cache-dir -r requirements.txt
     startCommand: bash start
