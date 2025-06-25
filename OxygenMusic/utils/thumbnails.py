@@ -148,22 +148,18 @@ async def gen_thumb(videoid: str):
         async with aiohttp.ClientSession() as session:
             async with session.get(thumbnail) as resp:
         
-                content = await resp.read()
                 if resp.status == 200:
-                    content_type = resp.headers.get('Content-Type')
-                    if 'jpeg' in content_type or 'jpg' in content_type:
-                        extension = 'jpg'
-                    elif 'png' in content_type:
-                        extension = 'png'
-                    else:
+                    content_type = resp.headers.get("Content-Type")
+                    if not ("jpeg" in content_type or "jpg" in content_type or "png" in content_type):
                         logging.error(f"Unexpected content type: {content_type}")
                         return None
 
                     filepath = f"cache/thumb{videoid}.png"
+                    data = await resp.read()
                     f = await aiofiles.open(filepath, mode="wb")
-                    await f.write(await resp.read())
+                    await f.write(data)
                     await f.close()
-                    # os.system(f"file {filepath}")
+                # os.system(f"file {filepath}")
                     
         
         image_path = f"cache/thumb{videoid}.png"
@@ -183,7 +179,6 @@ async def gen_thumb(videoid: str):
         
         draw = ImageDraw.Draw(background)
         arial = ImageFont.truetype("OxygenMusic/assets/font2.ttf", 30)
-        font = ImageFont.truetype("OxygenMusic/assets/font.ttf", 30)
         title_font = ImageFont.truetype("OxygenMusic/assets/font3.ttf", 45)
 
 
@@ -205,7 +200,6 @@ async def gen_thumb(videoid: str):
         if duration != "Live":
             color_line_percentage = random.uniform(0.15, 0.85)
             color_line_length = int(line_length * color_line_percentage)
-            white_line_length = line_length - color_line_length
 
             start_point_color = (text_x_position, 380)
             end_point_color = (text_x_position + color_line_length, 380)
