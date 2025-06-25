@@ -23,6 +23,7 @@ from OxygenMusic.utils.inline import (
 from OxygenMusic.utils.logger import play_logs
 from OxygenMusic.utils.stream.stream import stream
 from config import BANNED_USERS, lyrical
+from OxygenMusic.logging import LOGGER
 
 
 @app.on_message(
@@ -105,7 +106,7 @@ async def play_commnd(
                     forceplay=fplay,
                 )
             except Exception as e:
-                print(f"Error: {e}")
+                LOGGER(__name__).exception("Error streaming telegram audio", exc_info=e)
                 ex_type = type(e).__name__
                 err = e if ex_type == "AssistantErr" else _["general_2"].format(ex_type)
                 return await mystic.edit_text(err)
@@ -150,7 +151,7 @@ async def play_commnd(
                     forceplay=fplay,
                 )
             except Exception as e:
-                print(f"Error: {e}")
+                LOGGER(__name__).exception("Error streaming telegram video", exc_info=e)
                 ex_type = type(e).__name__
                 err = e if ex_type == "AssistantErr" else _["general_2"].format(ex_type)
                 return await mystic.edit_text(err)
@@ -284,7 +285,7 @@ async def play_commnd(
                     forceplay=fplay,
                 )
             except Exception as e:
-                print(f"Error: {e}")
+                LOGGER(__name__).exception("Error streaming soundcloud", exc_info=e)
                 ex_type = type(e).__name__
                 err = e if ex_type == "AssistantErr" else _["general_2"].format(ex_type)
                 return await mystic.edit_text(err)
@@ -299,7 +300,7 @@ async def play_commnd(
                     text=_["play_17"],
                 )
             except Exception as e:
-                print(f"Error: {e}")
+                LOGGER(__name__).exception("Error during stream_call", exc_info=e)
                 return await mystic.edit_text(_["general_2"].format(type(e).__name__))
             await mystic.edit_text(_["str_2"])
             try:
@@ -316,7 +317,7 @@ async def play_commnd(
                     forceplay=fplay,
                 )
             except Exception as e:
-                print(f"Error: {e}")
+                LOGGER(__name__).exception("Error streaming index link", exc_info=e)
                 ex_type = type(e).__name__
                 err = e if ex_type == "AssistantErr" else _["general_2"].format(ex_type)
                 return await mystic.edit_text(err)
@@ -373,7 +374,7 @@ async def play_commnd(
                 forceplay=fplay,
             )
         except Exception as e:
-            print(f"Error: {e}")
+            LOGGER(__name__).exception("Error streaming directly", exc_info=e)
             ex_type = type(e).__name__
             err = e if ex_type == "AssistantErr" else _["general_2"].format(ex_type)
             return await mystic.edit_text(err)
@@ -501,7 +502,7 @@ async def play_music(client, CallbackQuery, _):
             forceplay=ffplay,
         )
     except Exception as e:
-        print(f"Error: {e}")
+        LOGGER(__name__).exception("Error while playing from callback", exc_info=e)
         ex_type = type(e).__name__
         err = e if ex_type == "AssistantErr" else _["general_2"].format(ex_type)
         return await mystic.edit_text(err)
@@ -600,7 +601,7 @@ async def play_playlists_command(client, CallbackQuery, _):
             forceplay=ffplay,
         )
     except Exception as e:
-        print(f"Error: {e}")
+        LOGGER(__name__).exception("Error while streaming playlist", exc_info=e)
         ex_type = type(e).__name__
         err = e if ex_type == "AssistantErr" else _["general_2"].format(ex_type)
         return await mystic.edit_text(err)

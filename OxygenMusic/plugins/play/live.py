@@ -5,6 +5,7 @@ from OxygenMusic.utils.channelplay import get_channeplayCB
 from OxygenMusic.utils.decorators.language import languageCB
 from OxygenMusic.utils.stream.stream import stream
 from config import BANNED_USERS
+from OxygenMusic.logging import LOGGER
 
 
 @app.on_callback_query(filters.regex("LiveStream") & ~BANNED_USERS)
@@ -52,7 +53,7 @@ async def play_live_stream(client, CallbackQuery, _):
                 forceplay=ffplay,
             )
         except Exception as e:
-            print(f"Error: {e}")
+            LOGGER(__name__).exception("Error while streaming live", exc_info=e)
             ex_type = type(e).__name__
             err = e if ex_type == "AssistantErr" else _["general_2"].format(ex_type)
             return await mystic.edit_text(err)

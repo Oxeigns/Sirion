@@ -12,6 +12,7 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 
 from OxygenMusic import app
 from config import OWNER_ID
+from OxygenMusic.logging import LOGGER
 
 
 async def aexec(code, client, message):
@@ -181,7 +182,7 @@ async def shellrunner(_, message: Message):
                 stderr=subprocess.PIPE,
             )
         except Exception as err:
-            print(err)
+            LOGGER(__name__).exception(err)
             exc_type, exc_obj, exc_tb = sys.exc_info()
             errors = traceback.format_exception(
                 etype=exc_type,

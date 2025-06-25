@@ -4,6 +4,7 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 from config import LOG_GROUP_ID
 from OxygenMusic import app
 from OxygenMusic.utils.database import add_served_chat, get_assistant
+from OxygenMusic.logging import LOGGER
 
 welcome_photo = "https://files.catbox.moe/ajobub.jpg"  # Bot added image
 
@@ -53,4 +54,4 @@ async def join_watcher(_, message):
                     await userbot.join_chat(f"@{username}")
 
     except Exception as e:
-        print(f"Error: {e}")
+        LOGGER(__name__).exception("Error in join_watcher", exc_info=e)
