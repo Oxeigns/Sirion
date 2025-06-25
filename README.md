@@ -42,6 +42,7 @@
 - **Elegant UI**: Clean and modern user interface
 - **Group Management**: Powerful admin commands
 - **High Quality**: Crystal clear audio streaming
+- **VC Notifications**: Optional alerts when someone joins the voice chat
 
 ## 📊 Repository Stats
 
@@ -67,6 +68,7 @@
 | `/song` | Download a song as audio |
 | `/lyrics` | Get lyrics for a song |
 | `/settings` | Open bot settings |
+| `/vcnotify` | Toggle join notifications |
 
 ## 🚀 Deployment Guide
 
@@ -118,6 +120,9 @@ Fill in your:
 - `MUSIC_BOT_NAME` (your bot name)
 - `SUDO_USERS` (your user ID)
 - `START_IMG_URL` (image shown with /start)
+- `PING_IMG_URL` (image shown with /ping)
+
+You can host these images on your VPS and simply provide the direct links in the variables.
 
 #### Starting the Bot
 
