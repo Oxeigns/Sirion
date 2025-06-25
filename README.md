@@ -1,8 +1,8 @@
 <p align="center">
-<img src="https://telegra.ph/file/74c2786ec467c233c3132.jpg" alt="˹ᴛʜᴇ sɪʀɪᴏɴ ʙᴏᴛ˼ Logo" width="500px">
+<img src="https://telegra.ph/file/74c2786ec467c233c3132.jpg" alt="˹𝐓 - 𝐒𝐄𝐑𝐈𝐄𝐒 𝐌𝐔𝐒𝐈𝐂˼ Logo" width="500px">
 </p>
 
-<h1 align="center">🎵  ˹ᴛʜᴇ sɪʀɪᴏɴ ʙᴏᴛ˼  🎵</h1>
+<h1 align="center">🎵  ˹𝐓 - 𝐒𝐄𝐑𝐈𝐄𝐒 𝐌𝐔𝐒𝐈𝐂˼  🎵</h1>
 
 <p align="center">
   <b>A Powerful Telegram Music Bot to Play Songs in Voice Chats</b>
@@ -38,6 +38,7 @@
 - **Multiple Sources**: YouTube, Spotify, SoundCloud, and local files
 - **Playlists**: Create and manage playlists for your group
 - **Multi-Language**: Available in multiple languages
+- **Lyrics Search**: Fetch song lyrics easily
 - **Elegant UI**: Clean and modern user interface
 - **Group Management**: Powerful admin commands
 - **High Quality**: Crystal clear audio streaming
@@ -64,6 +65,7 @@
 | `/stop` | Stop the streaming |
 | `/playlist` | Show the playlist |
 | `/song` | Download a song as audio |
+| `/lyrics` | Get lyrics for a song |
 | `/settings` | Open bot settings |
 
 ## 🚀 Deployment Guide
@@ -119,11 +121,18 @@ Fill in your:
 
 #### Starting the Bot
 
+### 🐳 Docker Compose
+```bash
+docker-compose up --build -d
+```
+
+
+
 There are two ways to start the bot:
 
 1. Using Python directly:
 ```bash
-python3 -m ShrutiMusic
+python3 oxygen.py
 ```
 
 2. Using Bash script:

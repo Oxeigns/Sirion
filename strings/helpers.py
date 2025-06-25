@@ -153,5 +153,5 @@ HELP_15 = """
 HELP_16 = """
 <b><u>Privacy Command :</b></u>
 
-/privacy : Display the privacy statement for Sirion Bot
+/privacy : Display the privacy statement for T-Series Music Bot
 """
