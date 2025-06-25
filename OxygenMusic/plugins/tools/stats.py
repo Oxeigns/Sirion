@@ -14,8 +14,12 @@ from OxygenMusic import app
 from OxygenMusic.core.userbot import assistants
 from OxygenMusic.misc import SUDOERS, mongodb
 from OxygenMusic.plugins import ALL_MODULES
-from OxygenMusic.utils.database import (get_served_chats, get_served_users,
-                                        get_sudoers, is_autoend, is_autoleave)
+from OxygenMusic.utils.database import (
+    get_served_chats,
+    get_served_users,
+    get_sudoers,
+    is_autoend,
+)
 from OxygenMusic.utils.decorators.language import language, languageCB
 from OxygenMusic.utils.inline.stats import back_stats_buttons, stats_buttons
 
@@ -63,7 +67,6 @@ async def overall_stats(client, CallbackQuery, _):
         len(SUDOERS),
         await is_autoend(),
         config.DURATION_LIMIT_MIN,
-        await is_autoleave(),
     )
     med = InputMediaPhoto(media=config.STATS_IMG_URL, caption=text)
     try:
