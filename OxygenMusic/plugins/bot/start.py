@@ -16,6 +16,9 @@ from OxygenMusic.utils.database import (
     get_lang,
     is_banned_user,
     is_on_off,
+    get_vip_user,
+    is_vip_user,
+    user_play_count,
 )
 from OxygenMusic.utils import bot_sys_stats
 from OxygenMusic.utils.decorators.language import LanguageStart
@@ -151,5 +154,18 @@ async def welcome(client, message: Message):
                 )
                 await add_served_chat(message.chat.id)
                 await message.stop_propagation()
+            else:
+                if await is_vip_user(member.id):
+                    stats = await get_vip_user(member.id)
+                    plays = user_play_count.get(member.id, 0)
+                    welcome = (
+                        f"🎉 Welcome back, DJ {member.mention}!\n"
+                        f"You've spun 🔁 {plays} tracks.\n"
+                        "You now have VIP access to:\n"
+                        "- 🔁 Loop anything\n"
+                        "- 🎵 Skip queue limits\n"
+                        "- 💿 Access hidden tracks"
+                    )
+                    await message.reply_text(welcome)
         except Exception as ex:
             print(ex)
