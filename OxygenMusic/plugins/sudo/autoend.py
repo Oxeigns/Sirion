@@ -2,11 +2,11 @@ from pyrogram import filters
 from pyrogram.types import Message
 
 from OxygenMusic import app
-from OxygenMusic.misc import SUDOERS
+from OxygenMusic.misc import SUDOERS_FILTER
 from OxygenMusic.utils.database import autoend_off, autoend_on, is_autoend
 
 
-@app.on_message(filters.command("autoend") & SUDOERS)
+@app.on_message(filters.command("autoend") & SUDOERS_FILTER)
 async def auto_end_stream(_, message: Message):
     zerostate = await is_autoend()
     usage = f"<b>ᴇxᴀᴍᴘʟᴇ :</b>\n\n/autoend [ᴇɴᴀʙʟᴇ | ᴅɪsᴀʙʟᴇ]\n\n Current state : {zerostate}"

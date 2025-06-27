@@ -11,7 +11,7 @@ from pyrogram import filters
 
 import config
 from OxygenMusic import app
-from OxygenMusic.misc import HAPP, SUDOERS, XCB
+from OxygenMusic.misc import HAPP, SUDOERS_FILTER, XCB
 from OxygenMusic.utils.database import (get_active_chats, remove_active_chat,
                                         remove_active_video_chat)
 from OxygenMusic.utils.decorators.language import language
@@ -24,7 +24,7 @@ async def is_heroku():
     return "heroku" in socket.getfqdn()
 
 
-@app.on_message(filters.command(["getlog", "logs", "getlogs"]) & SUDOERS)
+@app.on_message(filters.command(["getlog", "logs", "getlogs"]) & SUDOERS_FILTER)
 @language
 async def log_(client, message, _):
     try:
@@ -33,7 +33,7 @@ async def log_(client, message, _):
         await message.reply_text(_["server_1"])
 
 
-@app.on_message(filters.command(["update", "gitpull"]) & SUDOERS)
+@app.on_message(filters.command(["update", "gitpull"]) & SUDOERS_FILTER)
 @language
 async def update_(client, message, _):
     if await is_heroku():
@@ -107,7 +107,7 @@ async def update_(client, message, _):
         exit()
 
 
-@app.on_message(filters.command(["restart"]) & SUDOERS)
+@app.on_message(filters.command(["restart"]) & SUDOERS_FILTER)
 async def restart_(_, message):
     response = await message.reply_text("ʀᴇsᴛᴀʀᴛɪɴɢ...")
     ac_chats = await get_active_chats()

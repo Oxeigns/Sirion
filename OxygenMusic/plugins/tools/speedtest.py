@@ -5,7 +5,7 @@ from pyrogram import filters
 from pyrogram.types import Message
 
 from OxygenMusic import app
-from OxygenMusic.misc import SUDOERS
+from OxygenMusic.misc import SUDOERS_FILTER
 from OxygenMusic.utils.decorators.language import language
 
 
@@ -25,7 +25,7 @@ def testspeed(m, _):
     return result
 
 
-@app.on_message(filters.command(["speedtest", "spt"]) & SUDOERS)
+@app.on_message(filters.command(["speedtest", "spt"]) & SUDOERS_FILTER)
 @language
 async def speedtest_function(client, message: Message, _):
     m = await message.reply_text(_["server_11"])

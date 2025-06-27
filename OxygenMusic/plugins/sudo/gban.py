@@ -6,7 +6,7 @@ from pyrogram.types import Message
 
 from config import BANNED_USERS
 from OxygenMusic import app
-from OxygenMusic.misc import SUDOERS
+from OxygenMusic.misc import SUDOERS, SUDOERS_FILTER
 from OxygenMusic.utils import get_readable_time
 from OxygenMusic.utils.database import (add_banned_user, get_banned_count,
                                         get_banned_users, get_served_chats,
@@ -15,7 +15,7 @@ from OxygenMusic.utils.decorators.language import language
 from OxygenMusic.utils.extraction import extract_user
 
 
-@app.on_message(filters.command(["gban", "globalban"]) & SUDOERS)
+@app.on_message(filters.command(["gban", "globalban"]) & SUDOERS_FILTER)
 @language
 async def global_ban(client, message: Message, _):
     if not message.reply_to_message:
@@ -63,7 +63,7 @@ async def global_ban(client, message: Message, _):
     await mystic.delete()
 
 
-@app.on_message(filters.command(["ungban"]) & SUDOERS)
+@app.on_message(filters.command(["ungban"]) & SUDOERS_FILTER)
 @language
 async def global_un(client, message: Message, _):
     if not message.reply_to_message:
@@ -95,7 +95,7 @@ async def global_un(client, message: Message, _):
     await mystic.delete()
 
 
-@app.on_message(filters.command(["gbannedusers", "gbanlist"]) & SUDOERS)
+@app.on_message(filters.command(["gbannedusers", "gbanlist"]) & SUDOERS_FILTER)
 @language
 async def gbanned_list(client, message: Message, _):
     counts = await get_banned_count()
