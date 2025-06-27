@@ -5,8 +5,14 @@ from OxygenMusic.core.userbot import Userbot
 from OxygenMusic.misc import dbb, heroku
 
 from .logging import LOGGER as LOGGER
-from .platforms import (AppleAPI, CarbonAPI, RessoAPI, SoundAPI, SpotifyAPI,
-                        TeleAPI, YouTubeAPI)
+from .platforms import (
+    AppleAPI,
+    CarbonAPI,
+    RessoAPI,
+    SoundAPI,
+    SpotifyAPI,
+    YouTubeAPI,
+)
 
 dirr()
 git()
@@ -16,10 +22,12 @@ heroku()
 app = Aviax()
 userbot = Userbot()
 
+from .platforms.Telegram import TeleAPI
+
 Apple = AppleAPI()
 Carbon = CarbonAPI()
 SoundCloud = SoundAPI()
 Spotify = SpotifyAPI()
 Resso = RessoAPI()
-Telegram = TeleAPI()
 YouTube = YouTubeAPI()
+Telegram = TeleAPI(app)
