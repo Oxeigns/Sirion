@@ -9,6 +9,12 @@ from OxygenMusic.core.mongo import mongodb
 
 from .logging import LOGGER
 
+# In-memory database placeholder. This dictionary will be
+# initialised by ``dbb()`` during bootstrap, but needs to be
+# present at import time so that other modules can safely
+# import ``db`` from here without hitting ``ImportError``.
+db = {}
+
 SUDOERS = filters.user()
 
 HAPP = None
