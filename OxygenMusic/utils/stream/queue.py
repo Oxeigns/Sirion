@@ -21,7 +21,7 @@ async def put_queue(
     title = title.title()
     try:
         duration_in_seconds = time_to_seconds(duration) - 3
-    except:
+    except Exception:
         duration_in_seconds = 0
     put = {
         "title": title,
@@ -64,7 +64,7 @@ async def put_queue_index(
                 None, check_duration, vidid
             )
             duration = seconds_to_min(dur)
-        except:
+        except Exception:
             duration = "ᴜʀʟ sᴛʀᴇᴀᴍ"
             dur = 0
     else:

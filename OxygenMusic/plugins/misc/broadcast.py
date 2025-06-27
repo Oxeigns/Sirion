@@ -73,7 +73,7 @@ async def braodcast_message(client, message, _):
                     await asyncio.sleep(0.2)
                 except FloodWait as fw:
                     await asyncio.sleep(fw.x)
-                except:
+                except Exception:
                     continue
             await message.reply_text(
                 f"Broadcast to chats completed! Sent to {sent_chats} chats."
@@ -100,7 +100,7 @@ async def braodcast_message(client, message, _):
                     await asyncio.sleep(0.2)
                 except FloodWait as fw:
                     await asyncio.sleep(fw.x)
-                except:
+                except Exception:
                     continue
             await message.reply_text(
                 f"Broadcast to users completed! Sent to {sent_users} users."
@@ -160,13 +160,13 @@ async def braodcast_message(client, message, _):
                     try:
                         await m.pin(disable_notification=True)
                         pin += 1
-                    except:
+                    except Exception:
                         continue
                 elif "-pinloud" in message.text:
                     try:
                         await m.pin(disable_notification=False)
                         pin += 1
-                    except:
+                    except Exception:
                         continue
                 sent += 1
                 await asyncio.sleep(0.2)
@@ -175,11 +175,11 @@ async def braodcast_message(client, message, _):
                 if flood_time > 200:
                     continue
                 await asyncio.sleep(flood_time)
-            except:
+            except Exception:
                 continue
         try:
             await message.reply_text(_["broad_3"].format(sent, pin))
-        except:
+        except Exception:
             pass
 
     if "-user" in message.text:
@@ -207,11 +207,11 @@ async def braodcast_message(client, message, _):
                 if flood_time > 200:
                     continue
                 await asyncio.sleep(flood_time)
-            except:
+            except Exception:
                 pass
         try:
             await message.reply_text(_["broad_4"].format(susr))
-        except:
+        except Exception:
             pass
 
     if "-assistant" in message.text:
@@ -236,12 +236,12 @@ async def braodcast_message(client, message, _):
                     if flood_time > 200:
                         continue
                     await asyncio.sleep(flood_time)
-                except:
+                except Exception:
                     continue
             text += _["broad_7"].format(num, sent)
         try:
             await aw.edit_text(text)
-        except:
+        except Exception:
             pass
     IS_BROADCASTING = False
 
@@ -262,7 +262,7 @@ async def auto_clean():
                     for user in authusers:
                         user_id = await alpha_to_int(user)
                         adminlist[chat_id].append(user_id)
-        except:
+        except Exception:
             continue
 
 
