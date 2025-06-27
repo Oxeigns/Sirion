@@ -135,9 +135,10 @@ docker-compose up --build -d
 
 There are two ways to start the bot:
 
+
 1. Using Python directly:
 ```bash
-python3 oxeignmusic.py
+python3 run.py
 ```
 
 2. Using Bash script:
