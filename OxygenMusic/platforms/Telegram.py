@@ -6,13 +6,17 @@ from typing import Union
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Voice
 
 import config
-from OxygenMusic import app
-from OxygenMusic.utils.formatters import (check_duration, convert_bytes,
-                                          get_readable_time, seconds_to_min)
+from OxygenMusic.utils.formatters import (
+    check_duration,
+    convert_bytes,
+    get_readable_time,
+    seconds_to_min,
+)
 
 
 class TeleAPI:
-    def __init__(self):
+    def __init__(self, bot):
+        self.app = bot
         self.chars_limit = 4096
         self.sleep = 5
 
@@ -132,7 +136,7 @@ class TeleAPI:
                             try:
                                 await mystic.edit_text(
                                     text=_["tg_1"].format(
-                                        app.mention,
+                                        self.app.mention,
                                         total_size,
                                         completed_size,
                                         percentage[:5],
@@ -147,7 +151,7 @@ class TeleAPI:
 
             speed_counter[message.id] = time.time()
             try:
-                await app.download_media(
+                await self.app.download_media(
                     message.reply_to_message,
                     file_name=fname,
                     progress=progress,
