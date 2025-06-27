@@ -205,6 +205,17 @@ pip install pytest
 pytest
 ```
 
+## ⚡ Fast Check Script
+
+Run the automated linter and tests together using the helper script:
+
+```bash
+./fast_check.sh
+```
+
+This command performs linting with `ruff` and runs the unit tests with `pytest`
+so you can ensure the bot is ready before deployment.
+
 ## 🌟 Credits and Acknowledgements
 
 - [swagger](https://github.com/majorgameapp): Main Developer
