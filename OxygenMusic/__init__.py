@@ -1,5 +1,3 @@
-from .logging import LOGGER
-
 # Global objects initialized at runtime
 app = None
 userbot = None
