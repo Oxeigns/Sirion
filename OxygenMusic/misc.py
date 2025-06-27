@@ -16,7 +16,7 @@ db = {}
 # references a Pyrogram filter built from that set.  Mutating ``SUDOERS``
 # will automatically affect the filter.
 SUDOERS = set()
-SUDOERS_FILTER = filters.user(SUDOERS)
+SUDOERS_FILTER = filters.user(list(SUDOERS))
 
 HAPP = None
 _boot_ = time.time()
@@ -67,7 +67,7 @@ async def sudo():
     if sudoers:
         for user_id in sudoers:
             SUDOERS.add(user_id)
-    SUDOERS_FILTER = filters.user(SUDOERS)
+    SUDOERS_FILTER = filters.user(list(SUDOERS))
     LOGGER(__name__).info("Sudoers Loaded.")
 
 

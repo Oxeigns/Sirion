@@ -8,6 +8,18 @@ import re
 from dotenv import load_dotenv
 from pyrogram import filters
 
+
+class BannedUsers(set):
+    """Maintain a set of banned user IDs while behaving like a Pyrogram filter."""
+
+    def __invert__(self):
+        """Return the inverted Pyrogram filter for these users."""
+        return ~filters.user(list(self))
+
+    def filter(self):
+        """Return a Pyrogram filter matching these users."""
+        return filters.user(list(self))
+
 load_dotenv()
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -118,7 +130,7 @@ SPOTIFY_PLAYLIST_IMG_URL = "https://files.catbox.moe/eehxb4.jpg"
 # 🔐 User & Bot State Stores
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-BANNED_USERS = filters.user()
+BANNED_USERS = BannedUsers()
 adminlist = {}
 lyrical = {}
 votemode = {}
