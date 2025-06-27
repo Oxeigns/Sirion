@@ -5,7 +5,6 @@
 import os
 import re
 
-from dotenv import load_dotenv
 from pyrogram import filters
 
 
@@ -20,7 +19,6 @@ class BannedUsers(set):
         """Return a Pyrogram filter matching these users."""
         return filters.user(list(self))
 
-load_dotenv()
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 # 📲 Telegram & API Credentials
@@ -44,6 +42,10 @@ HEROKU_API_KEY = os.getenv("HEROKU_API_KEY")
 # Validate essential configuration values
 if not API_ID:
     raise SystemExit("[ERROR] - API_ID environment variable is missing.")
+if not API_HASH:
+    raise SystemExit("[ERROR] - API_HASH environment variable is missing.")
+if not BOT_TOKEN:
+    raise SystemExit("[ERROR] - BOT_TOKEN environment variable is missing.")
 if not OWNER_ID:
     raise SystemExit("[ERROR] - OWNER_ID environment variable is missing.")
 if not LOG_GROUP_ID:

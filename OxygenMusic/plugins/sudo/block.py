@@ -3,7 +3,7 @@ from pyrogram.types import Message
 
 from config import BANNED_USERS
 from OxygenMusic import app
-from OxygenMusic.misc import SUDOERS_FILTER, SUDOERS
+from OxygenMusic.misc import SUDOERS_FILTER
 from OxygenMusic.utils.database import add_gban_user, remove_gban_user
 from OxygenMusic.utils.decorators.language import language
 from OxygenMusic.utils.extraction import extract_user

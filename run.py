@@ -27,4 +27,7 @@ if __name__ == "__main__":
 
     from OxygenMusic.__main__ import init
 
-    asyncio.run(init())
+    try:
+        asyncio.run(init())
+    except KeyboardInterrupt:
+        LOGGER(__name__).info("Bot stopped by user")
