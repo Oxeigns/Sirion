@@ -6,7 +6,8 @@ from pytgcalls.exceptions import NoActiveGroupCall
 
 import config
 from config import BANNED_USERS
-from OxygenMusic import LOGGER, app, userbot
+from OxygenMusic.logging import LOGGER
+from OxygenMusic import app, userbot
 from OxygenMusic.core.call import Aviax
 from OxygenMusic.misc import sudo
 from OxygenMusic.plugins import ALL_MODULES

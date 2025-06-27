@@ -15,7 +15,8 @@ from pytgcalls.types.input_stream.quality import (HighQualityAudio,
 from pytgcalls.types.stream import StreamAudioEnded
 
 import config
-from OxygenMusic import LOGGER, YouTube, app
+from OxygenMusic.logging import LOGGER
+from OxygenMusic import YouTube, app
 from OxygenMusic.misc import db
 from OxygenMusic.utils.database import (add_active_chat, add_active_video_chat,
                                         get_lang, get_loop, group_assistant,
