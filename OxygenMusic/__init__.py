@@ -1,20 +1,24 @@
+"""Initialize commonly used objects for the OxygenMusic package."""
+
+from .logging import LOGGER
 from OxygenMusic.core.bot import Aviax
+from OxygenMusic.core.userbot import Userbot
 from OxygenMusic.core.dir import dirr
 from OxygenMusic.core.git import git
-from OxygenMusic.core.userbot import Userbot
 from OxygenMusic.misc import dbb, heroku
-
-from .logging import LOGGER as LOGGER
-from .platforms import (AppleAPI, CarbonAPI, RessoAPI, SoundAPI, SpotifyAPI,
-                        TeleAPI, YouTubeAPI)
-
-dirr()
-git()
-dbb()
-heroku()
 
 app = Aviax()
 userbot = Userbot()
+
+from .platforms import (
+    AppleAPI,
+    CarbonAPI,
+    RessoAPI,
+    SoundAPI,
+    SpotifyAPI,
+    TeleAPI,
+    YouTubeAPI,
+)
 
 Apple = AppleAPI()
 Carbon = CarbonAPI()
@@ -23,3 +27,8 @@ Spotify = SpotifyAPI()
 Resso = RessoAPI()
 Telegram = TeleAPI()
 YouTube = YouTubeAPI()
+
+dirr()
+git()
+dbb()
+heroku()
