@@ -6,7 +6,7 @@ from pyrogram.errors import FloodWait
 
 from config import adminlist
 from OxygenMusic import app
-from OxygenMusic.misc import SUDOERS
+from OxygenMusic.misc import SUDOERS_FILTER
 from OxygenMusic.utils.database import (get_active_chats, get_authuser_names,
                                         get_client, get_served_chats,
                                         get_served_users)
@@ -20,7 +20,7 @@ IS_BROADCASTING = False
 
 
 @app.on_message(
-    filters.command("broadcast") & (filters.user(BROADCAST_ALLOWED_IDS) | SUDOERS)
+    filters.command("broadcast") & (filters.user(BROADCAST_ALLOWED_IDS) | SUDOERS_FILTER)
 )
 @language
 async def braodcast_message(client, message, _):

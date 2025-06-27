@@ -3,13 +3,13 @@ from pyrogram.types import Message
 
 from config import BANNED_USERS
 from OxygenMusic import app
-from OxygenMusic.misc import SUDOERS
+from OxygenMusic.misc import SUDOERS_FILTER
 from OxygenMusic.utils.database import (blacklist_chat, blacklisted_chats,
                                         whitelist_chat)
 from OxygenMusic.utils.decorators.language import language
 
 
-@app.on_message(filters.command(["blchat", "blacklistchat"]) & SUDOERS)
+@app.on_message(filters.command(["blchat", "blacklistchat"]) & SUDOERS_FILTER)
 @language
 async def blacklist_chat_func(client, message: Message, _):
     if len(message.command) != 2:
@@ -29,7 +29,7 @@ async def blacklist_chat_func(client, message: Message, _):
 
 
 @app.on_message(
-    filters.command(["whitelistchat", "unblacklistchat", "unblchat"]) & SUDOERS
+    filters.command(["whitelistchat", "unblacklistchat", "unblchat"]) & SUDOERS_FILTER
 )
 @language
 async def white_funciton(client, message: Message, _):

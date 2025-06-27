@@ -3,13 +3,13 @@ from pyrogram.types import Message
 
 from config import BANNED_USERS
 from OxygenMusic import app
-from OxygenMusic.misc import SUDOERS
+from OxygenMusic.misc import SUDOERS_FILTER, SUDOERS
 from OxygenMusic.utils.database import add_gban_user, remove_gban_user
 from OxygenMusic.utils.decorators.language import language
 from OxygenMusic.utils.extraction import extract_user
 
 
-@app.on_message(filters.command(["block"]) & SUDOERS)
+@app.on_message(filters.command(["block"]) & SUDOERS_FILTER)
 @language
 async def useradd(client, message: Message, _):
     if not message.reply_to_message:
@@ -23,7 +23,7 @@ async def useradd(client, message: Message, _):
     await message.reply_text(_["block_2"].format(user.mention))
 
 
-@app.on_message(filters.command(["unblock"]) & SUDOERS)
+@app.on_message(filters.command(["unblock"]) & SUDOERS_FILTER)
 @language
 async def userdel(client, message: Message, _):
     if not message.reply_to_message:
@@ -37,7 +37,7 @@ async def userdel(client, message: Message, _):
     await message.reply_text(_["block_4"].format(user.mention))
 
 
-@app.on_message(filters.command(["blocked", "blockedusers", "blusers"]) & SUDOERS)
+@app.on_message(filters.command(["blocked", "blockedusers", "blusers"]) & SUDOERS_FILTER)
 @language
 async def sudoers_list(client, message: Message, _):
     if not BANNED_USERS:

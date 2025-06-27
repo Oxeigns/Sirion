@@ -1,12 +1,9 @@
 import socket
 import time
 
-import heroku3
 from pyrogram import filters
 
 import config
-from OxygenMusic.core.mongo import mongodb
-
 from .logging import LOGGER
 
 # In-memory database placeholder. This dictionary will be
@@ -15,7 +12,11 @@ from .logging import LOGGER
 # import ``db`` from here without hitting ``ImportError``.
 db = {}
 
-SUDOERS = filters.user()
+# ``SUDOERS`` now stores user IDs in a simple set while ``SUDOERS_FILTER``
+# references a Pyrogram filter built from that set.  Mutating ``SUDOERS``
+# will automatically affect the filter.
+SUDOERS = set()
+SUDOERS_FILTER = filters.user(SUDOERS)
 
 HAPP = None
 _boot_ = time.time()
@@ -49,7 +50,9 @@ def dbb():
 
 
 async def sudo():
-    global SUDOERS
+    from OxygenMusic.core.mongo import mongodb
+
+    global SUDOERS_FILTER, SUDOERS
     SUDOERS.add(config.OWNER_ID)
     sudoersdb = mongodb.sudoers
     sudoers = await sudoersdb.find_one({"sudo": "sudo"})
@@ -64,6 +67,7 @@ async def sudo():
     if sudoers:
         for user_id in sudoers:
             SUDOERS.add(user_id)
+    SUDOERS_FILTER = filters.user(SUDOERS)
     LOGGER(__name__).info("Sudoers Loaded.")
 
 
@@ -72,6 +76,8 @@ def heroku():
     if is_heroku():
         if config.HEROKU_API_KEY and config.HEROKU_APP_NAME:
             try:
+                import heroku3
+
                 Heroku = heroku3.from_key(config.HEROKU_API_KEY)
                 HAPP = Heroku.app(config.HEROKU_APP_NAME)
                 LOGGER(__name__).info("Heroku App Configured")
@@ -79,3 +85,8 @@ def heroku():
                 LOGGER(__name__).warning(
                     "Please make sure your Heroku API Key and Your App name are configured correctly in the heroku."
                 )
+
+
+# Initialize in-memory database as soon as this module is imported.
+dbb()
+

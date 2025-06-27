@@ -2,13 +2,13 @@ from pyrogram import filters
 from pyrogram.types import Message
 
 from OxygenMusic import app
-from OxygenMusic.misc import SUDOERS
+from OxygenMusic.misc import SUDOERS_FILTER
 from OxygenMusic.utils.database import (get_lang, is_maintenance,
                                         maintenance_off, maintenance_on)
 from strings import get_string
 
 
-@app.on_message(filters.command(["maintenance"]) & SUDOERS)
+@app.on_message(filters.command(["maintenance"]) & SUDOERS_FILTER)
 async def maintenance(client, message: Message):
     try:
         language = await get_lang(message.chat.id)

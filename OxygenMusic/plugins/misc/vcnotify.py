@@ -2,14 +2,14 @@ from pyrogram import filters
 from pyrogram.types import Message
 
 from OxygenMusic import app
-from OxygenMusic.misc import SUDOERS
+from OxygenMusic.misc import SUDOERS_FILTER
 from OxygenMusic.utils.database import add_off, add_on, get_lang, is_on_off
 from strings import get_string
 
 VCNOTIFY_ID = 3
 
 
-@app.on_message(filters.command(["vcnotify"]) & SUDOERS)
+@app.on_message(filters.command(["vcnotify"]) & SUDOERS_FILTER)
 async def vcnotify_toggle(client, message: Message):
     language = await get_lang(message.chat.id)
     _ = get_string(language)

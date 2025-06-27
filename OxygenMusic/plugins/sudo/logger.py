@@ -1,12 +1,12 @@
 from pyrogram import filters
 
 from OxygenMusic import app
-from OxygenMusic.misc import SUDOERS
+from OxygenMusic.misc import SUDOERS_FILTER
 from OxygenMusic.utils.database import add_off, add_on
 from OxygenMusic.utils.decorators.language import language
 
 
-@app.on_message(filters.command(["logger"]) & SUDOERS)
+@app.on_message(filters.command(["logger"]) & SUDOERS_FILTER)
 @language
 async def logger(client, message, _):
     usage = _["log_1"]
@@ -23,7 +23,7 @@ async def logger(client, message, _):
         await message.reply_text(usage)
 
 
-@app.on_message(filters.command(["cookies"]) & SUDOERS)
+@app.on_message(filters.command(["cookies"]) & SUDOERS_FILTER)
 @language
 async def send_logs(client, message, _):
     """Send the cookie logging CSV file."""
