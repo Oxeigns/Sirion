@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: sirion
+    name: music-bot
     runtime: python
     buildCommand: pip install --no-cache-dir -r requirements.txt
-    startCommand: uvicorn sirion.main:app --host 0.0.0.0 --port 8080
+    startCommand: uvicorn bot.api.main:app --host 0.0.0.0 --port 8080
