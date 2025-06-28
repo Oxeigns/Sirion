@@ -1,10 +1,10 @@
 from ..logging import LOGGER
 
-try:  # noqa: WPS501 - optional dependency
+try:
     import uvloop
 
     uvloop.install()
-except ImportError:  # noqa: WPS440
+except ImportError:
     LOGGER(__name__).info("uvloop not installed, using default event loop")
 
 from pyrogram import Client, errors

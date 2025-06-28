@@ -27,7 +27,7 @@ async def join_watcher(_, message):
                     if not message.chat.username:  # Only for private groups
                         link = await app.export_chat_invite_link(message.chat.id)
                         invite_link = f"\nGroup Link: {link}" if link else ""
-                except:
+                except Exception:
                     pass
 
                 msg = (

@@ -43,7 +43,7 @@ def PlayWrapper(command):
 
         try:
             await message.delete()
-        except:
+        except Exception:
             pass
 
         audio_telegram = (
@@ -73,7 +73,7 @@ def PlayWrapper(command):
                 return await message.reply_text(_["setting_7"])
             try:
                 chat = await app.get_chat(chat_id)
-            except:
+            except Exception:
                 return await message.reply_text(_["cplay_4"])
             channel = chat.title
         else:
@@ -127,7 +127,7 @@ def PlayWrapper(command):
                         invitelink = message.chat.username
                         try:
                             await userbot.resolve_peer(invitelink)
-                        except:
+                        except Exception:
                             pass
                     else:
                         try:
@@ -167,7 +167,7 @@ def PlayWrapper(command):
 
                 try:
                     await userbot.resolve_peer(chat_id)
-                except:
+                except Exception:
                     pass
 
         return await command(

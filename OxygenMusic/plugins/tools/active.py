@@ -19,7 +19,7 @@ async def activevc(_, message: Message):
     for x in served_chats:
         try:
             title = (await app.get_chat(x)).title
-        except:
+        except Exception:
             await remove_active_chat(x)
             continue
         try:
@@ -31,7 +31,7 @@ async def activevc(_, message: Message):
                     f"<b>{j + 1}.</b> {unidecode(title).upper()} [<code>{x}</code>]\n"
                 )
             j += 1
-        except:
+        except Exception:
             continue
     if not text:
         await mystic.edit_text(f"» ɴᴏ ᴀᴄᴛɪᴠᴇ ᴠᴏɪᴄᴇ ᴄʜᴀᴛs ᴏɴ {app.mention}.")
@@ -51,7 +51,7 @@ async def activevi_(_, message: Message):
     for x in served_chats:
         try:
             title = (await app.get_chat(x)).title
-        except:
+        except Exception:
             await remove_active_video_chat(x)
             continue
         try:
@@ -63,7 +63,7 @@ async def activevi_(_, message: Message):
                     f"<b>{j + 1}.</b> {unidecode(title).upper()} [<code>{x}</code>]\n"
                 )
             j += 1
-        except:
+        except Exception:
             continue
     if not text:
         await mystic.edit_text(f"» ɴᴏ ᴀᴄᴛɪᴠᴇ ᴠɪᴅᴇᴏ ᴄʜᴀᴛs ᴏɴ {app.mention}.")
