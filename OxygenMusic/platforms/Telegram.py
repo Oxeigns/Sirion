@@ -54,7 +54,8 @@ class TeleAPI:
             dur = seconds_to_min(filex.duration)
         except Exception:
             try:
-                dur = await asyncio.get_event_loop().run_in_executor(
+                loop = asyncio.get_running_loop()
+                dur = await loop.run_in_executor(
                     None, check_duration, file_path
                 )
                 dur = seconds_to_min(dur)
