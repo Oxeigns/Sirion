@@ -1,12 +1,7 @@
-FROM nikolaik/python-nodejs:python3.10-nodejs19
+FROM python:3.11-slim
 
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends ffmpeg \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+WORKDIR /app
+COPY . /app
+RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . /app/
-WORKDIR /app/
-RUN pip3 install --no-cache-dir -U -r requirements.txt
-
-CMD bash start
+CMD ["uvicorn", "sirion.main:app", "--host", "0.0.0.0", "--port", "8080"]

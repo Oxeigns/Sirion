@@ -1,3 +1,3 @@
 #!/bin/bash
 set -e
-python3 run.py
+uvicorn sirion.main:app --host 0.0.0.0 --port 8080

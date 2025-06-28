@@ -1,11 +1,9 @@
 import importlib.util
 from pathlib import Path
-
 import pytest
 
 spec = importlib.util.spec_from_file_location(
-    "formatters",
-    Path(__file__).resolve().parents[1] / "OxygenMusic" / "utils" / "formatters.py",
+    "formatters", Path(__file__).resolve().parents[1] / "sirion" / "utils" / "formatters.py"
 )
 formatters = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(formatters)
