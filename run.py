@@ -1,11 +1,10 @@
 import asyncio
 from dotenv import load_dotenv
-
-load_dotenv()
-
 import OxygenMusic
 from OxygenMusic.bootstrap import bootstrap
 from OxygenMusic.logging import LOGGER
+
+load_dotenv()
 
 
 if __name__ == "__main__":

@@ -46,7 +46,7 @@ async def global_ban(client, message: Message, _):
             number_of_chats += 1
         except FloodWait as fw:
             await asyncio.sleep(int(fw.value))
-        except:
+        except Exception:
             continue
     await add_banned_user(user.id)
     await message.reply_text(
@@ -88,7 +88,7 @@ async def global_un(client, message: Message, _):
             number_of_chats += 1
         except FloodWait as fw:
             await asyncio.sleep(int(fw.value))
-        except:
+        except Exception:
             continue
     await remove_banned_user(user.id)
     await message.reply_text(_["gban_9"].format(user.mention, number_of_chats))

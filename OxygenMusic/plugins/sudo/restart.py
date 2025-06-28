@@ -29,7 +29,7 @@ async def is_heroku():
 async def log_(client, message, _):
     try:
         await message.reply_document(document="log.txt")
-    except:
+    except Exception:
         await message.reply_text(_["server_1"])
 
 
@@ -56,10 +56,12 @@ async def update_(client, message, _):
     if verification == "":
         return await response.edit(_["server_6"])
     updates = ""
-    ordinal = lambda format: "%d%s" % (
-        format,
-        "tsnrhtdd"[(format // 10 % 10 != 1) * (format % 10 < 4) * format % 10 :: 4],
-    )
+
+    def ordinal(format):
+        suffix = "tsnrhtdd"[
+            (format // 10 % 10 != 1) * (format % 10 < 4) * format % 10 :: 4
+        ]
+        return f"{format}{suffix}"
     for info in repo.iter_commits(f"HEAD..origin/{config.UPSTREAM_BRANCH}"):
         updates += f"<b>➣ #{info.count()}: <a href={REPO_}/commit/{info}>{info.summary}</a> ʙʏ -> {info.author}</b>\n\t\t\t\t<b>➥ ᴄᴏᴍᴍɪᴛᴇᴅ ᴏɴ :</b> {ordinal(int(datetime.fromtimestamp(info.committed_date).strftime('%d')))} {datetime.fromtimestamp(info.committed_date).strftime('%b')}, {datetime.fromtimestamp(info.committed_date).strftime('%Y')}\n\n"
     _update_response_ = "<b>ᴀ ɴᴇᴡ ᴜᴩᴅᴀᴛᴇ ɪs ᴀᴠᴀɪʟᴀʙʟᴇ ғᴏʀ ᴛʜᴇ ʙᴏᴛ !</b>\n\n➣ ᴩᴜsʜɪɴɢ ᴜᴩᴅᴀᴛᴇs ɴᴏᴡ\n\n<b><u>ᴜᴩᴅᴀᴛᴇs:</u></b>\n\n"
@@ -83,10 +85,10 @@ async def update_(client, message, _):
                 )
                 await remove_active_chat(x)
                 await remove_active_video_chat(x)
-            except:
+            except Exception:
                 pass
         await response.edit(f"{nrs.text}\n\n{_['server_7']}")
-    except:
+    except Exception:
         pass
 
     if await is_heroku():
@@ -119,14 +121,14 @@ async def restart_(_, message):
             )
             await remove_active_chat(x)
             await remove_active_video_chat(x)
-        except:
+        except Exception:
             pass
 
     try:
         shutil.rmtree("downloads")
         shutil.rmtree("raw_files")
         shutil.rmtree("cache")
-    except:
+    except Exception:
         pass
     await response.edit_text(
         "» ʀᴇsᴛᴀʀᴛ ᴘʀᴏᴄᴇss sᴛᴀʀᴛᴇᴅ, ᴘʟᴇᴀsᴇ ᴡᴀɪᴛ ғᴏʀ ғᴇᴡ sᴇᴄᴏɴᴅs ᴜɴᴛɪʟ ᴛʜᴇ ʙᴏᴛ sᴛᴀʀᴛs..."

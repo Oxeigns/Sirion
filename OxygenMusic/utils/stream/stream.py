@@ -48,7 +48,7 @@ async def stream(
                     thumbnail,
                     vidid,
                 ) = await YouTube.details(search, False if spotify else True)
-            except:
+            except Exception:
                 continue
             if str(duration_min) == "None":
                 continue
@@ -78,7 +78,7 @@ async def stream(
                     file_path, direct = await YouTube.download(
                         vidid, mystic, video=status, videoid=True
                     )
-                except:
+                except Exception:
                     raise AssistantErr(_["play_14"])
                 await Aviax.join_call(
                     chat_id,
@@ -151,7 +151,7 @@ async def stream(
             file_path, direct = await YouTube.download(
                 vidid, mystic, videoid=True, video=status
             )
-        except:
+        except Exception:
             raise AssistantErr(_["play_14"])
 
         if await is_active_chat(chat_id):

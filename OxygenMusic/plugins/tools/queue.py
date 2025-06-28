@@ -49,7 +49,7 @@ async def get_queue(client, message: Message, _):
             return await message.reply_text(_["setting_7"])
         try:
             await app.get_chat(chat_id)
-        except:
+        except Exception:
             return await message.reply_text(_["cplay_4"])
         cplay = True
     else:
@@ -124,7 +124,7 @@ async def get_queue(client, message: Message, _):
                         break
                 else:
                     break
-        except:
+        except Exception:
             return
 
 
@@ -132,7 +132,7 @@ async def get_queue(client, message: Message, _):
 async def quite_timer(client, CallbackQuery: CallbackQuery):
     try:
         await CallbackQuery.answer()
-    except:
+    except Exception:
         pass
 
 
@@ -144,7 +144,7 @@ async def queued_tracks(client, CallbackQuery: CallbackQuery, _):
     what, videoid = callback_request.split("|")
     try:
         chat_id, channel = await get_channeplayCB(_, what, CallbackQuery)
-    except:
+    except Exception:
         return
     if not await is_active_chat(chat_id):
         return await CallbackQuery.answer(_["general_5"], show_alert=True)
@@ -192,7 +192,7 @@ async def queue_back(client, CallbackQuery: CallbackQuery, _):
     cplay = callback_data.split(None, 1)[1]
     try:
         chat_id, channel = await get_channeplayCB(_, cplay, CallbackQuery)
-    except:
+    except Exception:
         return
     if not await is_active_chat(chat_id):
         return await CallbackQuery.answer(_["general_5"], show_alert=True)
@@ -266,5 +266,5 @@ async def queue_back(client, CallbackQuery: CallbackQuery, _):
                         break
                 else:
                     break
-        except:
+        except Exception:
             return
