@@ -1,1 +1,0 @@
-"""Sirion application package."""
